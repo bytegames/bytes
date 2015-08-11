@@ -1,0 +1,42 @@
+﻿body {
+     margin: 0; 
+     color: white;
+     background-color: black;
+}
+
+header {
+    width: 640px;
+    height: 100px;
+    margin: auto;
+    margin-top: 40px;
+    border: 1px solid white;
+}
+
+header button {
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: block;        
+    height: 30px;
+    min-width: 60px;
+    font-size: 20px;
+    color: white;
+    background: none;
+    border: 1px solid white;
+}
+
+header div {
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+canvas { 
+    width: 640px;
+    height: 480px;
+    margin: auto;
+    margin-top: 40px;
+    display:block;
+    border:1px solid white
+}
