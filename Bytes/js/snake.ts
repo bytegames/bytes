@@ -1,10 +1,9 @@
 ﻿module Bytes {
 
-    export class SnakeSegment extends GameObject {
+    export class SnakeSegment extends GameObject implements IGameObject {
 
         public color: string = "#A32900";
-
-        public position: Position;
+                
         constructor(position: Position) {
 
             super();
@@ -19,6 +18,11 @@
 
             Canvas.fillRect(boardX, boardY, size, size, this.color);
         }
+
+        public handleCollision(snake: Snake) {
+
+            snake.die();
+        }
     }
 
     export class Snake extends SnakeSegment {
@@ -27,6 +31,8 @@
 
         public hitDetected: boolean = false;
         public isAlive: boolean = false;
+        public hiScore: number = 0;
+        public points: number = 0;
         public lives: number = 5;
 
         public segments: SnakeSegment[] = [];
@@ -49,7 +55,10 @@
         public die() {
             
             this.hitDetected = true;
-
+            this.hiScore = this.points > this.hiScore
+                ? this.points
+                : this.hiScore;
+            
             if (this.lives == 0) {
 
                 this.isAlive = false;
@@ -112,7 +121,8 @@
                 }
 
                 if (GameBoard.grid[pos.X][pos.Y]) {
-                    this.die();
+                    var object: GameObject = GameBoard.grid[pos.X][pos.Y];
+                    object.handleCollision(this);
                 }
             }
             
@@ -135,8 +145,7 @@
                     : lastPosition;
 
                 lastPosition = segment.position;
-                GameBoard.moveObject(segment, newPosition);
-                segment.draw();
+                GameBoard.moveObject(segment, newPosition);                
             }
 
             if (this.segments.length <= this.maxLength) {
@@ -144,8 +153,7 @@
                 var newSegment = new SnakeSegment(lastPosition);
                 this.segments.push(newSegment);
 
-                GameBoard.placeObject(newSegment, lastPosition);
-                newSegment.draw();
+                GameBoard.placeObject(newSegment, lastPosition);                
             }            
         }        
 

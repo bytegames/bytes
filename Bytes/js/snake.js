@@ -19,6 +19,9 @@ var Bytes;
             var size = Bytes.GameBoard.blockSize - 2;
             Bytes.Canvas.fillRect(boardX, boardY, size, size, this.color);
         };
+        SnakeSegment.prototype.handleCollision = function (snake) {
+            snake.die();
+        };
         return SnakeSegment;
     })(Bytes.GameObject);
     Bytes.SnakeSegment = SnakeSegment;
@@ -28,6 +31,8 @@ var Bytes;
             _super.call(this, position);
             this.hitDetected = false;
             this.isAlive = false;
+            this.hiScore = 0;
+            this.points = 0;
             this.lives = 5;
             this.segments = [];
             this.maxLength = 8;
@@ -41,6 +46,9 @@ var Bytes;
         };
         Snake.prototype.die = function () {
             this.hitDetected = true;
+            this.hiScore = this.points > this.hiScore
+                ? this.points
+                : this.hiScore;
             if (this.lives == 0) {
                 this.isAlive = false;
                 return Bytes.Game.reset();
@@ -88,7 +96,8 @@ var Bytes;
                     this.onHitScreenEdge(Bytes.ScreenEdge.SOUTH);
                 }
                 if (Bytes.GameBoard.grid[pos.X][pos.Y]) {
-                    this.die();
+                    var object = Bytes.GameBoard.grid[pos.X][pos.Y];
+                    object.handleCollision(this);
                 }
             }
             if (!this.isAlive) {
@@ -107,13 +116,11 @@ var Bytes;
                     : lastPosition;
                 lastPosition = segment.position;
                 Bytes.GameBoard.moveObject(segment, newPosition);
-                segment.draw();
             }
             if (this.segments.length <= this.maxLength) {
                 var newSegment = new SnakeSegment(lastPosition);
                 this.segments.push(newSegment);
                 Bytes.GameBoard.placeObject(newSegment, lastPosition);
-                newSegment.draw();
             }
         };
         Snake.prototype.destroy = function () {

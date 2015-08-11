@@ -20,11 +20,15 @@ var Bytes;
         GUI.init = function () {
             GUI.header = document.querySelector("header");
             GUI.lives = document.querySelector("#lives");
+            GUI.points = document.querySelector("#points");
         };
         GUI.draw = function () {
             GUI.lives.innerText = Bytes.Game.isRunning
                 ? "Lives: " + Bytes.Game.player1.lives
                 : "Press Start";
+            GUI.points.innerText = Bytes.Game.isRunning
+                ? "Points: " + Bytes.Game.player1.points
+                : "Hi Score: " + Bytes.Game.player1.hiScore;
         };
         return GUI;
     })();

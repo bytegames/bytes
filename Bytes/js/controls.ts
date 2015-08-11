@@ -22,11 +22,13 @@
 
         static header: HTMLElement;            
         static lives: HTMLElement; 
-        
+        static points: HTMLElement;
+
         static init() {
 
             GUI.header = <HTMLElement>document.querySelector("header");
             GUI.lives = <HTMLElement>document.querySelector("#lives");
+            GUI.points = <HTMLElement>document.querySelector("#points");
         }
 
         static draw() {
@@ -34,6 +36,10 @@
             GUI.lives.innerText = Game.isRunning
                 ? "Lives: " + Game.player1.lives
                 : "Press Start";
+
+            GUI.points.innerText = Game.isRunning
+                ? "Points: " + Game.player1.points
+                : "Hi Score: " + Game.player1.hiScore;
         }
     }
 

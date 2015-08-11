@@ -3,6 +3,10 @@ var Bytes;
     var GameObject = (function () {
         function GameObject() {
         }
+        GameObject.prototype.handleCollision = function (object) {
+        };
+        GameObject.prototype.draw = function () {
+        };
         return GameObject;
     })();
     Bytes.GameObject = GameObject;

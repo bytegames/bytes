@@ -63,14 +63,29 @@
             GameBoard.init();
         }
 
+        // TODO: Move this to item randomizer class
+        static coinCounter = 0;
+
         static processTurn() {
 
             console.log("process turn");
-            GameBoard.draw();
 
             Controls.processInput();
             Game.player1.processTurn();   
             
+            // TODO: Move this to item randomizer class
+            Game.coinCounter += 1;
+            if (Game.coinCounter == 12) {
+
+                Game.coinCounter = 0;
+                console.log("Coins on board: " + Bytes.Coin.instances.length);
+                if (Bytes.Coin.instances.length < 6) {
+                    var coin = Bytes.Coin.generateRandom();
+                    Bytes.GameBoard.placeAtRandom(coin);
+                }
+            }
+
+            GameBoard.draw();
             GUI.draw();         
         }
     }

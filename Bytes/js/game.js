@@ -45,12 +45,24 @@ var Bytes;
         };
         Game.processTurn = function () {
             console.log("process turn");
-            Bytes.GameBoard.draw();
             Bytes.Controls.processInput();
             Game.player1.processTurn();
+            // TODO: Move this to item randomizer class
+            Game.coinCounter += 1;
+            if (Game.coinCounter == 12) {
+                Game.coinCounter = 0;
+                console.log("Coins on board: " + Bytes.Coin.instances.length);
+                if (Bytes.Coin.instances.length < 6) {
+                    var coin = Bytes.Coin.generateRandom();
+                    Bytes.GameBoard.placeAtRandom(coin);
+                }
+            }
+            Bytes.GameBoard.draw();
             Bytes.GUI.draw();
         };
         Game.isRunning = false;
+        // TODO: Move this to item randomizer class
+        Game.coinCounter = 0;
         return Game;
     })();
     Bytes.Game = Game;

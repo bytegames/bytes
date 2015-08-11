@@ -5,6 +5,7 @@ var Bytes;
         }
         GameBoard.placeObject = function (object, position) {
             GameBoard.grid[position.X][position.Y] = object;
+            object.position = Bytes.Position.copy(position);
         };
         GameBoard.removeObjectAt = function (position) {
             GameBoard.grid[position.X][position.Y] = null;
@@ -12,14 +13,23 @@ var Bytes;
         GameBoard.moveObject = function (object, newPosition) {
             GameBoard.removeObjectAt(object.position);
             GameBoard.placeObject(object, newPosition);
-            object.position = Bytes.Position.copy(newPosition);
         };
-        GameBoard.draw = function () {
-            Bytes.Canvas.fill(GameBoard.backgroundColor);
-            var size = GameBoard.blockSize;
-            for (var cx = 0; cx < GameBoard.width; cx++) {
-                for (var cy = 0; cy < GameBoard.height; cy++) {
-                    Bytes.Canvas.drawRect(cx * size, cy * size, size, size, GameBoard.gridColor);
+        GameBoard.placeAtRandom = function (object) {
+            var position = GameBoard.generateRandomPosition();
+            GameBoard.placeObject(object, position);
+        };
+        ;
+        GameBoard.moveToRandom = function (object) {
+            var position = GameBoard.generateRandomPosition();
+            GameBoard.moveObject(object, position);
+        };
+        GameBoard.generateRandomPosition = function () {
+            var position;
+            while (!position) {
+                var x = Math.floor(Math.random() * GameBoard.width);
+                var y = Math.floor(Math.random() * GameBoard.height);
+                if (!GameBoard.grid[x][y]) {
+                    return new Bytes.Position(x, y);
                 }
             }
         };
@@ -29,6 +39,18 @@ var Bytes;
             GameBoard.grid = new Array(GameBoard.width);
             for (var i = 0, ii = GameBoard.width; i != ii; ++i) {
                 GameBoard.grid[i] = new Array(GameBoard.height);
+            }
+        };
+        GameBoard.draw = function () {
+            Bytes.Canvas.fill(GameBoard.backgroundColor);
+            var size = GameBoard.blockSize;
+            for (var cx = 0; cx < GameBoard.width; cx++) {
+                for (var cy = 0; cy < GameBoard.height; cy++) {
+                    Bytes.Canvas.drawRect(cx * size, cy * size, size, size, GameBoard.gridColor);
+                    if (GameBoard.grid[cx][cy]) {
+                        GameBoard.grid[cx][cy].draw();
+                    }
+                }
             }
         };
         GameBoard.backgroundColor = "#000A1F";

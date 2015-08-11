@@ -1,10 +1,26 @@
 ﻿module Bytes {
 
-    export class GameObject {
+    export interface IGameObject {
+
+        constructor;
+        position;
+        handleCollision(object: GameObject);
+        draw();
+    }
+
+    export class GameObject implements IGameObject {
 
         position: Position;
 
         constructor() {
+
+        }
+
+        handleCollision(object: GameObject) {
+
+        }
+
+        draw() {
 
         }
     }
