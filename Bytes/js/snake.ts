@@ -68,7 +68,7 @@
             this.lives -= 1;
             this.destroy();
 
-            this.position = new Position(0, 0);            
+            this.position = new Position(0, 0);
             this.direction = Direction.NONE;
         }
 
@@ -164,6 +164,7 @@
             }
 
             this.segments = [this];
+            this.maxLength = 8;
         }
     }
 }

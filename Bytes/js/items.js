@@ -19,7 +19,7 @@ var Bytes;
         };
         Coin.prototype.handleCollision = function (snake) {
             snake.points += this.value;
-            snake.maxLength += (snake.maxLength / 2);
+            snake.maxLength += 8;
             Bytes.GameBoard.removeObjectAt(this.position);
             Coin.instances.splice(this.index, 1);
         };

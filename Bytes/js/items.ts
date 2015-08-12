@@ -25,7 +25,7 @@
         public handleCollision(snake: Snake) {
 
             snake.points += this.value;
-            snake.maxLength += (snake.maxLength / 2);
+            snake.maxLength += 8;
             GameBoard.removeObjectAt(this.position);
             Coin.instances.splice(this.index, 1);
         }

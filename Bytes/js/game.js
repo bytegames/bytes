@@ -16,6 +16,7 @@ var Bytes;
             Game.htmlBody.onkeyup = Bytes.Controls.onKeyUp;
             Bytes.GameBoard.init();
             Bytes.GameBoard.draw();
+            Bytes.GUI.draw();
         }
         Game.start = function () {
             if (Game.isRunning) {
@@ -40,7 +41,7 @@ var Bytes;
         };
         Game.reset = function () {
             Game.isRunning = false;
-            Game.clock.stop();
+            Game.clock && Game.clock.stop();
             Bytes.GameBoard.init();
         };
         Game.processTurn = function () {

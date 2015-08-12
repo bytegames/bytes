@@ -128,6 +128,7 @@ var Bytes;
                 Bytes.GameBoard.removeObjectAt(this.segments[i].position);
             }
             this.segments = [this];
+            this.maxLength = 8;
         };
         return Snake;
     })(SnakeSegment);

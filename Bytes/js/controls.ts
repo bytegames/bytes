@@ -23,12 +23,15 @@
         static header: HTMLElement;            
         static lives: HTMLElement; 
         static points: HTMLElement;
+        static version: HTMLElement;
 
         static init() {
 
             GUI.header = <HTMLElement>document.querySelector("header");
             GUI.lives = <HTMLElement>document.querySelector("#lives");
             GUI.points = <HTMLElement>document.querySelector("#points");
+            GUI.version = <HTMLElement>document.querySelector("#version");
+            GUI.version.innerText = "Build: " + window['version'];
         }
 
         static draw() {
@@ -40,6 +43,8 @@
             GUI.points.innerText = Game.isRunning
                 ? "Points: " + Game.player1.points
                 : "Hi Score: " + Game.player1.hiScore;
+
+            
         }
     }
 

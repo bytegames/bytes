@@ -21,6 +21,8 @@ var Bytes;
             GUI.header = document.querySelector("header");
             GUI.lives = document.querySelector("#lives");
             GUI.points = document.querySelector("#points");
+            GUI.version = document.querySelector("#version");
+            GUI.version.innerText = "Build: " + window['version'];
         };
         GUI.draw = function () {
             GUI.lives.innerText = Bytes.Game.isRunning

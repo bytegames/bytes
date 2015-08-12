@@ -25,6 +25,7 @@
 
             GameBoard.init();
             GameBoard.draw();
+            GUI.draw();
             
         }
       
@@ -59,7 +60,7 @@
         static reset() {
 
             Game.isRunning = false;         
-            Game.clock.stop();
+            Game.clock && Game.clock.stop();
             GameBoard.init();
         }
 
