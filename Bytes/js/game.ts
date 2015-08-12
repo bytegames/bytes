@@ -13,6 +13,8 @@
         static clock: Timer;
         static player1: Snake;
 
+        static hiScore: number = 0;
+
         static isRunning: boolean = false;
 
         static init() {
@@ -78,27 +80,23 @@
 
         static processTurn() {
 
-            console.log("process turn");
-
+            
             Controls.processInput();
             Game.player1.processTurn();   
             
             // TODO: Move this to item randomizer class
-            Game.coinCounter += 1;
-            console.log("Coin counter: " + Game.coinCounter);            
-            if (Game.coinCounter >= 20) {                                
+            Game.coinCounter += 1;            
+            if (Game.coinCounter >= 20) {
                 Game.coinCounter = 0;
 
                 if (!Math.floor(Math.random() + .5)) {
 
-                    if (Bytes.Coin.instances.length) {
+                    var probability = (Coin.coinsActive + .5) / 5;
+                    if (!Math.floor(Math.random() + probability)) {
 
-                        if (!!Math.floor(Math.random() + ((10 - Bytes.Coin.instances.length) / 100))) {
-
-                            var coin = Bytes.Coin.generateRandom();
-                            Bytes.GameBoard.placeAtRandom(coin);
-                            console.log("Coins on board: " + Bytes.Coin.instances.length);
-                        }
+                        var coin = Coin.generateRandom();
+                        GameBoard.placeAtRandom(coin);
+                        console.log("Coins on board: " + Coin.coinsActive);                    
                     }
                 }                
             }

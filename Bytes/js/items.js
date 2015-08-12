@@ -14,14 +14,17 @@ var Bytes;
         }
         Coin.generateRandom = function () {
             var coin = new Coin(Coin.values[Math.floor(Math.random() * Coin.values.length)]);
-            coin.index = Coin.instances.push(coin);
+            coin.index = Coin.coinIndex;
+            ++Coin.coinIndex;
+            ++Coin.coinsActive;
             return coin;
         };
         Coin.prototype.handleCollision = function (snake) {
             snake.points += this.value;
             snake.maxLength += 8;
             Bytes.GameBoard.removeObjectAt(this.position);
-            Coin.instances.splice(this.index, 1);
+            delete Coin.instances[this.index];
+            --Coin.coinsActive;
         };
         Coin.prototype.draw = function () {
             if (this.position) {
@@ -37,7 +40,9 @@ var Bytes;
             }
         };
         Coin.values = [200, 600, 800, 1000, 2000];
-        Coin.instances = [];
+        Coin.instances = {};
+        Coin.coinIndex = 0;
+        Coin.coinsActive = 0;
         return Coin;
     })(Bytes.GameObject);
     Bytes.Coin = Coin;

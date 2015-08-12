@@ -49,6 +49,9 @@ var Bytes;
             this.hiScore = this.points > this.hiScore
                 ? this.points
                 : this.hiScore;
+            Bytes.Game.hiScore = this.hiScore > Bytes.Game.hiScore
+                ? this.hiScore
+                : Bytes.Game.hiScore;
             if (this.lives == 0) {
                 this.isAlive = false;
                 return Bytes.Game.reset();

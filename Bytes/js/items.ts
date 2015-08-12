@@ -3,7 +3,9 @@
     export class Coin extends GameObject implements IGameObject {
 
         public static values: number[] = [200, 600, 800, 1000, 2000];
-        public static instances: Coin[] = [];
+        public static instances: { [index: number]: Coin } = {};
+        public static coinIndex: number = 0;
+        public static coinsActive: number = 0;
 
         public index: number;
         public value: number;
@@ -18,7 +20,9 @@
         public static generateRandom() {
 
             var coin = new Coin(Coin.values[Math.floor(Math.random() * Coin.values.length)]);
-            coin.index = Coin.instances.push(coin);
+            coin.index = Coin.coinIndex;
+            ++Coin.coinIndex;
+            ++Coin.coinsActive;
             return coin;
         }
 
@@ -27,7 +31,8 @@
             snake.points += this.value;
             snake.maxLength += 8;
             GameBoard.removeObjectAt(this.position);
-            Coin.instances.splice(this.index, 1);
+            delete Coin.instances[this.index];
+            --Coin.coinsActive;           
         }
 
         public draw() {

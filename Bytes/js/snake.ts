@@ -59,6 +59,10 @@
                 ? this.points
                 : this.hiScore;
             
+            Game.hiScore = this.hiScore > Game.hiScore
+                ? this.hiScore
+                : Game.hiScore;
+
             if (this.lives == 0) {
 
                 this.isAlive = false;

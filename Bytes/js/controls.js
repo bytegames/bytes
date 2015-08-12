@@ -19,7 +19,7 @@ var Bytes;
         }
         GUI.init = function () {
             GUI.header = document.querySelector("header");
-            GUI.points = document.querySelector("#points");
+            GUI.score = document.querySelector("#score");
             GUI.lives = document.querySelector("#lives");
             GUI.build = document.querySelector("#build");
             GUI.build.innerText = "Build: " + window['version'];
@@ -28,9 +28,9 @@ var Bytes;
             GUI.lives.innerText = Bytes.Game.isRunning
                 ? "Lives: " + Bytes.Game.player1.lives
                 : "Press Start";
-            GUI.points.innerText = Bytes.Game.isRunning
-                ? "Points: " + Bytes.Game.player1.points
-                : "Hi Score: " + Bytes.Game.player1.hiScore;
+            GUI.score.innerText = Bytes.Game.isRunning
+                ? "Score: " + Bytes.Game.player1.points
+                : "Hi Score: " + Bytes.Game.hiScore;
         };
         return GUI;
     })();
