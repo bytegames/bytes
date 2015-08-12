@@ -2,7 +2,7 @@
 
     export class SnakeSegment extends GameObject implements IGameObject {
 
-        public color: string = "#A32900";
+        public color: string = "#04B404";
                 
         constructor(position: Position) {
 
@@ -12,9 +12,9 @@
 
         public draw() {
 
-            var boardX = (this.position.X * GameBoard.blockSize) + 1;
-            var boardY = (this.position.Y * GameBoard.blockSize) + 1;
-            var size = GameBoard.blockSize - 2;
+            var boardX = (this.position.X * GameBoard.blockSize);
+            var boardY = (this.position.Y * GameBoard.blockSize);
+            var size = GameBoard.blockSize;
 
             Canvas.fillRect(boardX, boardY, size, size, this.color);
         }

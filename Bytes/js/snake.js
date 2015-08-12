@@ -10,13 +10,13 @@ var Bytes;
         __extends(SnakeSegment, _super);
         function SnakeSegment(position) {
             _super.call(this);
-            this.color = "#A32900";
+            this.color = "#04B404";
             this.position = position;
         }
         SnakeSegment.prototype.draw = function () {
-            var boardX = (this.position.X * Bytes.GameBoard.blockSize) + 1;
-            var boardY = (this.position.Y * Bytes.GameBoard.blockSize) + 1;
-            var size = Bytes.GameBoard.blockSize - 2;
+            var boardX = (this.position.X * Bytes.GameBoard.blockSize);
+            var boardY = (this.position.Y * Bytes.GameBoard.blockSize);
+            var size = Bytes.GameBoard.blockSize;
             Bytes.Canvas.fillRect(boardX, boardY, size, size, this.color);
         };
         SnakeSegment.prototype.handleCollision = function (snake) {

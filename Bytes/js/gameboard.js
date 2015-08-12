@@ -46,7 +46,7 @@ var Bytes;
             var size = GameBoard.blockSize;
             for (var cx = 0; cx < GameBoard.width; cx++) {
                 for (var cy = 0; cy < GameBoard.height; cy++) {
-                    Bytes.Canvas.drawRect(cx * size, cy * size, size, size, GameBoard.gridColor);
+                    // Canvas.drawRect(cx * size, cy * size, size, size, GameBoard.gridColor);
                     if (GameBoard.grid[cx][cy]) {
                         GameBoard.grid[cx][cy].draw();
                     }
@@ -55,7 +55,7 @@ var Bytes;
         };
         GameBoard.backgroundColor = "#000A1F";
         GameBoard.gridColor = "#001F5C";
-        GameBoard.blockSize = 16;
+        GameBoard.blockSize = 8;
         return GameBoard;
     })();
     Bytes.GameBoard = GameBoard;

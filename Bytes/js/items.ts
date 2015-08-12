@@ -34,9 +34,9 @@
 
             if (this.position) {
 
-                var x = (this.position.X * GameBoard.blockSize) + (GameBoard.blockSize / 2) + 1;
-                var y = (this.position.Y * GameBoard.blockSize) + (GameBoard.blockSize / 2) + 1;
-                var r = (GameBoard.blockSize / 2) - 4;
+                var x = (this.position.X * GameBoard.blockSize) + (GameBoard.blockSize / 2);
+                var y = (this.position.Y * GameBoard.blockSize) + (GameBoard.blockSize / 2);
+                var r = (GameBoard.blockSize / 2) - 1;
 
                 Canvas.context.beginPath();
                 Canvas.context.arc(x, y, r, 0, 2 * Math.PI, false);

@@ -2,9 +2,9 @@
 
     class GameDifficulty {
 
-        static EASY: number = 800;
-        static MEDIUM: number = 400;
-        static DIFFICULT: number = 200;
+        static EASY: number = 600;
+        static MEDIUM: number = 300;
+        static DIFFICULT: number = 100;
     }
     
     export class Game {
@@ -15,36 +15,45 @@
 
         static isRunning: boolean = false;
 
-        constructor() {
+        static init() {
             
             Canvas.init(<HTMLCanvasElement>document.querySelector("canvas"));
             Controls.init();
 
             Game.htmlBody = <HTMLBodyElement>document.querySelector("body");
-            Game.htmlBody.onkeyup = Controls.onKeyUp;
+            Game.htmlBody.onkeyup = Controls.onKeyUp;              
+
+            Game.ready();
+        }              
+
+        static ready() {
 
             GameBoard.init();
             GameBoard.draw();
-            GUI.draw();
+
+            Game.player1 = new Snake({ X: 0, Y: 0 });
+            Game.player1.direction = Direction.RIGHT;
+
+            Game.clock = new Timer(GameDifficulty.DIFFICULT, 0, Game.processTurn);          
             
+            GUI.draw();
         }
-      
+
         static start() {
 
             if (Game.isRunning) {
                 return;
             }
+
+            if (Game.clock.isPaused) {
+                return Game.togglePause();
+            }
                         
-            Game.isRunning = true;
-
-            Game.player1 = new Snake({ X: 0, Y: 0 });
-            Game.player1.direction = Direction.RIGHT;
-
-            Game.clock = new Timer(GameDifficulty.DIFFICULT, 0, Game.processTurn);
+            Game.isRunning = true;           
             Game.clock.start();
         }
 
-        static pause() {
+        static togglePause() {
 
             if (Game.clock.isPaused) {
                 Game.clock.resume();
@@ -58,10 +67,10 @@
         }
 
         static reset() {
-
-            Game.isRunning = false;         
+            
             Game.clock && Game.clock.stop();
-            GameBoard.init();
+            Game.isRunning = false;         
+            Game.ready();            
         }
 
         // TODO: Move this to item randomizer class
@@ -76,20 +85,27 @@
             
             // TODO: Move this to item randomizer class
             Game.coinCounter += 1;
-            if (Game.coinCounter == 12) {
-
+            console.log("Coin counter: " + Game.coinCounter);            
+            if (Game.coinCounter >= 20) {                                
                 Game.coinCounter = 0;
-                console.log("Coins on board: " + Bytes.Coin.instances.length);
-                if (Bytes.Coin.instances.length < 6) {
-                    var coin = Bytes.Coin.generateRandom();
-                    Bytes.GameBoard.placeAtRandom(coin);
-                }
+
+                if (!Math.floor(Math.random() + .5)) {
+
+                    if (Bytes.Coin.instances.length) {
+
+                        if (!!Math.floor(Math.random() + ((10 - Bytes.Coin.instances.length) / 100))) {
+
+                        var coin = Bytes.Coin.generateRandom();
+                        Bytes.GameBoard.placeAtRandom(coin);
+                        console.log("Coins on board: " + Bytes.Coin.instances.length);
+                    }
+                }                
             }
 
             GameBoard.draw();
             GUI.draw();         
         }
-    }
-
-    var game = new Game();
+    }    
 }
+
+Bytes.Game.init();

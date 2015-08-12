@@ -19,16 +19,17 @@
 
         public static fill(color: string) {
 
+            Canvas.context.beginPath();
             Canvas.context.rect(0, 0, Canvas.width, Canvas.height);
             Canvas.context.fillStyle = color;
-            Canvas.context.fill();
+            Canvas.context.fill();            
         }
 
         public static fillRect(x: number, y: number, w: number, h: number, color: string) {
 
+            Canvas.context.beginPath();
             Canvas.context.fillStyle = color;
-            Canvas.context.fillRect(x, y, w, h);
-            Canvas.context.stroke();
+            Canvas.context.fillRect(x, y, w, h);            
         }
 
         public static drawRect(x: number, y: number, w: number, h: number, color: string) {

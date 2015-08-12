@@ -4,10 +4,10 @@ var Bytes;
         function Buttons() {
         }
         Buttons.init = function () {
-            Buttons.play = document.querySelector("#play");
+            Buttons.start = document.querySelector("#start");
             Buttons.pause = document.querySelector("#pause");
             Buttons.reset = document.querySelector("#reset");
-            Buttons.play.onclick = Controls.onClickPlay;
+            Buttons.start.onclick = Controls.onClickPlay;
             Buttons.pause.onclick = Controls.onClickPause;
             Buttons.reset.onclick = Controls.onClickReset;
         };
@@ -19,10 +19,10 @@ var Bytes;
         }
         GUI.init = function () {
             GUI.header = document.querySelector("header");
-            GUI.lives = document.querySelector("#lives");
             GUI.points = document.querySelector("#points");
-            GUI.version = document.querySelector("#version");
-            GUI.version.innerText = "Build: " + window['version'];
+            GUI.lives = document.querySelector("#lives");
+            GUI.build = document.querySelector("#build");
+            GUI.build.innerText = "Build: " + window['version'];
         };
         GUI.draw = function () {
             GUI.lives.innerText = Bytes.Game.isRunning
@@ -46,7 +46,7 @@ var Bytes;
             Bytes.Game.start();
         };
         Controls.onClickPause = function () {
-            Bytes.Game.pause();
+            Bytes.Game.togglePause();
         };
         Controls.onClickReset = function () {
             Bytes.Game.reset();

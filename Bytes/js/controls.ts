@@ -2,17 +2,17 @@
 
     export class Buttons {
 
-        static play: HTMLButtonElement;
+        static start: HTMLButtonElement;
         static pause: HTMLButtonElement;
         static reset: HTMLButtonElement;
 
         static init() {
             
-            Buttons.play = <HTMLButtonElement>document.querySelector("#play");
+            Buttons.start = <HTMLButtonElement>document.querySelector("#start");
             Buttons.pause = <HTMLButtonElement>document.querySelector("#pause");
             Buttons.reset = <HTMLButtonElement>document.querySelector("#reset");
 
-            Buttons.play.onclick = Controls.onClickPlay;
+            Buttons.start.onclick = Controls.onClickPlay;
             Buttons.pause.onclick = Controls.onClickPause;
             Buttons.reset.onclick = Controls.onClickReset;
         }
@@ -23,15 +23,15 @@
         static header: HTMLElement;            
         static lives: HTMLElement; 
         static points: HTMLElement;
-        static version: HTMLElement;
+        static build: HTMLElement;
 
         static init() {
 
             GUI.header = <HTMLElement>document.querySelector("header");
-            GUI.lives = <HTMLElement>document.querySelector("#lives");
             GUI.points = <HTMLElement>document.querySelector("#points");
-            GUI.version = <HTMLElement>document.querySelector("#version");
-            GUI.version.innerText = "Build: " + window['version'];
+            GUI.lives = <HTMLElement>document.querySelector("#lives");
+            GUI.build = <HTMLElement>document.querySelector("#build");
+            GUI.build.innerText = "Build: " + window['version'];
         }
 
         static draw() {
@@ -42,9 +42,7 @@
 
             GUI.points.innerText = Game.isRunning
                 ? "Points: " + Game.player1.points
-                : "Hi Score: " + Game.player1.hiScore;
-
-            
+                : "Hi Score: " + Game.player1.hiScore;            
         }
     }
 
@@ -63,7 +61,7 @@
 
         static onClickPause() {
 
-            Game.pause();
+            Game.togglePause();
         }
 
         static onClickReset() {

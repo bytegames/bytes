@@ -25,9 +25,9 @@ var Bytes;
         };
         Coin.prototype.draw = function () {
             if (this.position) {
-                var x = (this.position.X * Bytes.GameBoard.blockSize) + (Bytes.GameBoard.blockSize / 2) + 1;
-                var y = (this.position.Y * Bytes.GameBoard.blockSize) + (Bytes.GameBoard.blockSize / 2) + 1;
-                var r = (Bytes.GameBoard.blockSize / 2) - 4;
+                var x = (this.position.X * Bytes.GameBoard.blockSize) + (Bytes.GameBoard.blockSize / 2);
+                var y = (this.position.Y * Bytes.GameBoard.blockSize) + (Bytes.GameBoard.blockSize / 2);
+                var r = (Bytes.GameBoard.blockSize / 2) - 1;
                 Bytes.Canvas.context.beginPath();
                 Bytes.Canvas.context.arc(x, y, r, 0, 2 * Math.PI, false);
                 Bytes.Canvas.context.strokeStyle = "#FFFF00";

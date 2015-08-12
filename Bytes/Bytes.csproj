@@ -83,6 +83,9 @@
     <Content Include="js\items.js">
       <DependentUpon>items.ts</DependentUpon>
     </Content>
+    <Content Include="js\loader.js">
+      <DependentUpon>loader.ts</DependentUpon>
+    </Content>
     <Content Include="js\snake.js">
       <DependentUpon>snake.ts</DependentUpon>
     </Content>
@@ -118,6 +121,9 @@
     <Content Include="js\items.js.map">
       <DependentUpon>items.ts</DependentUpon>
     </Content>
+    <Content Include="js\loader.js.map">
+      <DependentUpon>loader.ts</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,6 +151,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="js\gameboard.ts" />
     <TypeScriptCompile Include="js\items.ts" />
+    <TypeScriptCompile Include="js\loader.ts" />
     <TypeScriptCompile Include="js\snake.ts" />
     <TypeScriptCompile Include="js\timer.ts" />
     <TypeScriptCompile Include="js\types.ts" />

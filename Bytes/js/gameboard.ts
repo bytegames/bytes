@@ -5,7 +5,7 @@
         public static backgroundColor: string = "#000A1F";
         public static gridColor: string = "#001F5C";
 
-        public static blockSize = 16;
+        public static blockSize = 8;
 
         public static height;
         public static width;
@@ -73,7 +73,8 @@
             for (var cx = 0; cx < GameBoard.width; cx++) {
                 for (var cy = 0; cy < GameBoard.height; cy++) {
 
-                    Canvas.drawRect(cx * size, cy * size, size, size, GameBoard.gridColor);
+                    // Canvas.drawRect(cx * size, cy * size, size, size, GameBoard.gridColor);
+
                     if (GameBoard.grid[cx][cy]) {
                         GameBoard.grid[cx][cy].draw();
                     }
