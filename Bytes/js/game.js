@@ -62,10 +62,12 @@ var Bytes;
             if (Game.coinCounter >= 20) {
                 Game.coinCounter = 0;
                 if (!Math.floor(Math.random() + .5)) {
-                    if (Bytes.Coin.instances.length < 6) {
-                        var coin = Bytes.Coin.generateRandom();
-                        Bytes.GameBoard.placeAtRandom(coin);
-                        console.log("Coins on board: " + Bytes.Coin.instances.length);
+                    if (Bytes.Coin.instances.length) {
+                        if (!!Math.floor(Math.random() + ((10 - Bytes.Coin.instances.length) / 100))) {
+                            var coin = Bytes.Coin.generateRandom();
+                            Bytes.GameBoard.placeAtRandom(coin);
+                            console.log("Coins on board: " + Bytes.Coin.instances.length);
+                        }
                     }
                 }
             }

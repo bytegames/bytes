@@ -95,9 +95,10 @@
 
                         if (!!Math.floor(Math.random() + ((10 - Bytes.Coin.instances.length) / 100))) {
 
-                        var coin = Bytes.Coin.generateRandom();
-                        Bytes.GameBoard.placeAtRandom(coin);
-                        console.log("Coins on board: " + Bytes.Coin.instances.length);
+                            var coin = Bytes.Coin.generateRandom();
+                            Bytes.GameBoard.placeAtRandom(coin);
+                            console.log("Coins on board: " + Bytes.Coin.instances.length);
+                        }
                     }
                 }                
             }
