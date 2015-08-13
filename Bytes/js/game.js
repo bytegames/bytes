@@ -79,5 +79,4 @@ var Bytes;
     })();
     Bytes.Game = Game;
 })(Bytes || (Bytes = {}));
-Bytes.Game.init();
 //# sourceMappingURL=game.js.map
