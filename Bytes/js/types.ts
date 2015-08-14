@@ -63,5 +63,11 @@
 
             return new Position(position.X, position.Y);
         }
-    }    
+    }
+
+    export enum Speed {
+        SLOW,
+        NORMAL,
+        FAST
+    }
 }

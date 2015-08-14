@@ -3,9 +3,9 @@ var Bytes;
     var GameDifficulty = (function () {
         function GameDifficulty() {
         }
-        GameDifficulty.EASY = 600;
-        GameDifficulty.MEDIUM = 300;
-        GameDifficulty.DIFFICULT = 100;
+        GameDifficulty.EASY = 300;
+        GameDifficulty.MEDIUM = 150;
+        GameDifficulty.DIFFICULT = 50;
         return GameDifficulty;
     })();
     var Game = (function () {
@@ -23,7 +23,7 @@ var Bytes;
             Bytes.GameBoard.draw();
             Game.player1 = new Bytes.Snake({ X: 0, Y: 0 });
             Game.player1.direction = Bytes.Direction.RIGHT;
-            Game.clock = new Bytes.Timer(GameDifficulty.DIFFICULT, 0, Game.processTurn);
+            Game.clock = new Bytes.Timer(GameDifficulty.DIFFICULT, 0, Game.onClockTick);
             Bytes.GUI.draw();
         };
         Game.start = function () {
@@ -52,19 +52,33 @@ var Bytes;
             Game.isRunning = false;
             Game.ready();
         };
-        Game.processTurn = function () {
+        Game.onClockTick = function () {
             Bytes.Controls.processInput();
             Game.player1.processTurn();
-            // TODO: Move this to item randomizer class
-            Game.coinCounter += 1;
-            if (Game.coinCounter >= 20) {
-                Game.coinCounter = 0;
-                if (!Math.floor(Math.random() + .5)) {
-                    var probability = (Bytes.Coin.coinsActive + .5) / 5;
-                    if (!Math.floor(Math.random() + probability)) {
-                        var coin = Bytes.Coin.generateRandom();
-                        Bytes.GameBoard.placeAtRandom(coin);
-                        console.log("Coins on board: " + Bytes.Coin.coinsActive);
+            if (Game.clock.tick == Bytes.ClockTick.EVEN) {
+                // TODO: Move this to item randomizer class
+                Game.coinCounter += 1;
+                if (Game.coinCounter >= 20) {
+                    Game.coinCounter = 0;
+                    if (!Math.floor(Math.random() + .5)) {
+                        var probability = (Bytes.Coin.coinsActive + .5) / 5;
+                        if (!Math.floor(Math.random() + probability)) {
+                            if (!Math.floor(Math.random() + .5)) {
+                                var coin = Bytes.Coin.generateRandom();
+                                Bytes.GameBoard.placeAtRandom(coin);
+                            }
+                            else {
+                                if (!Math.floor(Math.random() + .5)) {
+                                    var slowPlayer = new Bytes.SlowPlayer();
+                                    Bytes.GameBoard.placeAtRandom(slowPlayer);
+                                }
+                                else {
+                                    var fastPlayer = new Bytes.FastPlayer();
+                                    Bytes.GameBoard.placeAtRandom(fastPlayer);
+                                }
+                            }
+                            console.log("Coins on board: " + Bytes.Coin.coinsActive);
+                        }
                     }
                 }
             }
@@ -79,5 +93,4 @@ var Bytes;
     })();
     Bytes.Game = Game;
 })(Bytes || (Bytes = {}));
-Bytes.Game.init();
 //# sourceMappingURL=game.js.map

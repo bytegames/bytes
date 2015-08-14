@@ -29,6 +29,8 @@ var Bytes;
         __extends(Snake, _super);
         function Snake(position) {
             _super.call(this, position);
+            this.speed = Bytes.Speed.NORMAL;
+            this.skipNextTurn = false;
             this.hitDetected = false;
             this.isAlive = false;
             this.hiScore = 0;
@@ -61,9 +63,24 @@ var Bytes;
             this.position = new Bytes.Position(0, 0);
             this.direction = Bytes.Direction.NONE;
         };
+        Snake.prototype.setSpeed = function (speed) {
+            this.speed = speed;
+            this.skipNextTurn = (speed === Bytes.Speed.SLOW);
+        };
         Snake.prototype.processTurn = function () {
             if (!this.isAlive) {
                 return;
+            }
+            // Skip every other clock tick unless moving fast
+            if (this.speed != Bytes.Speed.FAST && Bytes.Game.clock.tick == Bytes.ClockTick.ODD) {
+                return;
+            }
+            // Skip 3 clock ticks if moving slow
+            if (this.speed == Bytes.Speed.SLOW && Bytes.Game.clock.tick == Bytes.ClockTick.EVEN) {
+                this.skipNextTurn = !this.skipNextTurn;
+                if (this.skipNextTurn) {
+                    return;
+                }
             }
             this.hitDetected = false;
             var isMoving = true;

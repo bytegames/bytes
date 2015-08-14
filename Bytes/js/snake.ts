@@ -28,6 +28,8 @@
     export class Snake extends SnakeSegment {
 
         public direction: Direction;
+        public speed: Speed = Speed.NORMAL;
+        public skipNextTurn: boolean = false;
 
         public hitDetected: boolean = false;
         public isAlive: boolean = false;
@@ -76,12 +78,33 @@
             this.direction = Direction.NONE;
         }
 
+        public setSpeed(speed: Speed) {
+            
+            this.speed = speed;
+            this.skipNextTurn = (speed === Speed.SLOW);
+        }
+
         public processTurn() {
                         
             if (!this.isAlive) {           
                 return;
             }
+                        
+            // Skip every other clock tick unless moving fast
+            if (this.speed != Speed.FAST && Game.clock.tick == ClockTick.ODD) {
+                
+                return;
+            }
 
+            // Skip 3 clock ticks if moving slow
+            if (this.speed == Speed.SLOW && Game.clock.tick == ClockTick.EVEN) {
+
+                this.skipNextTurn = !this.skipNextTurn;
+                if (this.skipNextTurn) {
+                    return ;
+                }
+            }
+            
             this.hitDetected = false;
             var isMoving = true;
             var oldPos: Position = Position.copy(this.position);

@@ -4,16 +4,17 @@ var Bytes;
         function Loader() {
         }
         Loader.init = function () {
-            Loader.loadNext();
+            Loader.counter = Loader.files.length;
+            Loader.files.forEach(Loader.loadFile);
         };
-        Loader.loadNext = function () {
+        Loader.onLoadFile = function () {
             Loader.files.length && Loader.loadFile(Loader.files.shift());
         };
         Loader.loadFile = function (filename) {
             var script = document.createElement("script");
             script.type = "text/javascript";
             script.src = filename + "?v=" + Loader.version;
-            script.onload = Loader.loadNext;
+            script.onload = Loader.onLoadFile;
             document.body.appendChild(script);
         };
         Loader.version = window['version'].replace(/\/| |:|(A|P)M/g, "");

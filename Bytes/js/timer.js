@@ -5,8 +5,14 @@ var Bytes;
         ClockType[ClockType["INFINITE"] = 1] = "INFINITE";
     })(Bytes.ClockType || (Bytes.ClockType = {}));
     var ClockType = Bytes.ClockType;
+    (function (ClockTick) {
+        ClockTick[ClockTick["EVEN"] = 0] = "EVEN";
+        ClockTick[ClockTick["ODD"] = 1] = "ODD";
+    })(Bytes.ClockTick || (Bytes.ClockTick = {}));
+    var ClockTick = Bytes.ClockTick;
     var Timer = (function () {
         function Timer(interval, duration, elaspedHandler) {
+            this.tick = ClockTick.EVEN;
             this.onElapsed = function () { console.log("No clock event"); };
             this.interval = interval;
             this.duration = duration;
@@ -17,6 +23,9 @@ var Bytes;
             if (this.isPaused) {
                 return;
             }
+            this.tick = (this.tick === ClockTick.EVEN)
+                ? ClockTick.ODD
+                : ClockTick.EVEN;
             this.onElapsed();
             if (this.type == ClockType.TIMED) {
                 this.stop();

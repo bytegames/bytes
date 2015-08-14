@@ -5,14 +5,20 @@
         INFINITE
     }
 
+    export enum ClockTick {
+        EVEN,
+        ODD
+    }
+
     export class Timer {
 
         private handle: number;
         private interval: number;
         private duration: number;
 
-        private type: ClockType;
-        private isRunning: boolean;
+        public type: ClockType;
+        public tick: ClockTick = ClockTick.EVEN;
+        public isRunning: boolean;
         public isPaused: boolean;
 
         private onElapsed: () => any = () => { console.log("No clock event") };
@@ -21,6 +27,10 @@
             if (this.isPaused) {
                 return;
             }
+            
+            this.tick = (this.tick === ClockTick.EVEN)
+                ? ClockTick.ODD
+                : ClockTick.EVEN;
 
             this.onElapsed();
             if (this.type == ClockType.TIMED) {
@@ -64,6 +74,6 @@
         public resume() {
             
             this.isPaused = false;
-        }
+        }                
     }
 }

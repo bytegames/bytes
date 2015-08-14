@@ -42,5 +42,11 @@ var Bytes;
         return Position;
     })();
     Bytes.Position = Position;
+    (function (Speed) {
+        Speed[Speed["SLOW"] = 0] = "SLOW";
+        Speed[Speed["NORMAL"] = 1] = "NORMAL";
+        Speed[Speed["FAST"] = 2] = "FAST";
+    })(Bytes.Speed || (Bytes.Speed = {}));
+    var Speed = Bytes.Speed;
 })(Bytes || (Bytes = {}));
 //# sourceMappingURL=types.js.map
