@@ -57,6 +57,8 @@
 
         static togglePause() {
 
+
+
             if (Game.clock.isPaused) {
                 Game.clock.resume();
                 Game.isRunning = true;
