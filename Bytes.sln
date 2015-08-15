@@ -3,12 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bytes", "Bytes\Bytes.csproj", "{B6D8017A-CF09-419E-A58F-963AEBBB541D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F9BE8A8-5E08-43D1-8361-642F7EAF5AD9}"
 	ProjectSection(SolutionItems) = preProject
 		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
 	EndProjectSection
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Bytes", "Bytes\Bytes.njsproj", "{EC6894F8-87F9-4A16-8922-9187AB6DC50E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +16,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B6D8017A-CF09-419E-A58F-963AEBBB541D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6D8017A-CF09-419E-A58F-963AEBBB541D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6D8017A-CF09-419E-A58F-963AEBBB541D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6D8017A-CF09-419E-A58F-963AEBBB541D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC6894F8-87F9-4A16-8922-9187AB6DC50E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC6894F8-87F9-4A16-8922-9187AB6DC50E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC6894F8-87F9-4A16-8922-9187AB6DC50E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC6894F8-87F9-4A16-8922-9187AB6DC50E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
