@@ -1,0 +1,22 @@
+﻿{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "removeComments": false,
+    "declaration": true,
+    "sourceMap": true,
+    "out": "./js/byteserver.js"
+  },
+
+  "files": [
+    "./ts/version.ts",
+    "./ts/gameboard.ts",
+    "./ts/game.ts",
+    "./ts/canvas.ts",
+    "./ts/controls.ts",
+    "./ts/types.ts",
+    "./ts/items.ts",
+    "./ts/snake.ts",
+    "./ts/timer.ts"
+  ]
+}
