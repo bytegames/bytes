@@ -3,7 +3,7 @@
     "module": "commonjs",
     "noImplicitAny": false,
     "removeComments": false,
-    "declaration": true,
+    "declaration": false,
     "sourceMap": true,
     "out": "./js/byteserver.js"
   },

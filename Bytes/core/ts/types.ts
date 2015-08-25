@@ -1,8 +1,16 @@
-﻿module Bytes {
+﻿namespace Bytes {
+
+    export class GameDifficulty {
+
+         static EASY: number = 300;
+         static MEDIUM: number = 150;
+         static DIFFICULT: number = 50;
+    }
 
     export interface IGameObject {
 
         constructor;
+        index;
         position;
         handleCollision(object: GameObject);
         draw();
@@ -10,9 +18,10 @@
 
     export class GameObject implements IGameObject {
 
+        index: number;
         position: Position;
 
-        constructor() {
+        constructor(position: Position) {
 
         }
 
@@ -31,6 +40,8 @@
 
         }
     }
+
+  
 
     export enum ScreenEdge {
         NORTH,

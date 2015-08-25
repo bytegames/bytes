@@ -1,4 +1,4 @@
-﻿module Bytes {
+﻿namespace Bytes {
 
     export class SlowPlayerEvent extends GameEvent {
 

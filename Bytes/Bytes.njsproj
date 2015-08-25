@@ -35,49 +35,29 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="client\js\bytes.d.ts" />
+    <TypeScriptCompile Include="client\ts\game.ts" />
+    <TypeScriptCompile Include="client\ts\canvas.ts" />
+    <TypeScriptCompile Include="client\ts\controls.ts" />
     <TypeScriptCompile Include="client\ts\gameboard.ts" />
-    <TypeScriptCompile Include="client\ts\snake.ts" />
-    <TypeScriptCompile Include="core\game.ts" />
-    <TypeScriptCompile Include="core\gameboard.ts" />
-    <TypeScriptCompile Include="core\version.ts" />
+    <TypeScriptCompile Include="core\ts\objectlist.ts" />
+    <TypeScriptCompile Include="core\ts\player.ts" />
+    <TypeScriptCompile Include="core\ts\snake.ts" />
+    <TypeScriptCompile Include="core\ts\game.ts" />
+    <TypeScriptCompile Include="core\ts\gameboard.ts" />
+    <TypeScriptCompile Include="core\ts\items.ts" />
+    <TypeScriptCompile Include="core\ts\timer.ts" />
+    <TypeScriptCompile Include="core\ts\types.ts" />
+    <TypeScriptCompile Include="core\ts\version.ts" />
+    <TypeScriptCompile Include="server\ts\commands.ts" />
+    <TypeScriptCompile Include="server\ts\processor.ts" />
+    <TypeScriptCompile Include="server\ts\server.ts" />
+    <TypeScriptCompile Include="server\ts\websocketframe.ts" />
     <TypeScriptCompile Include="typedef\node.d.ts" />
-    <TypeScriptCompile Include="js\canvas.ts" />
-    <TypeScriptCompile Include="js\controls.ts" />
-    <TypeScriptCompile Include="js\game.ts" />
-    <TypeScriptCompile Include="js\gameboard.ts" />
-    <TypeScriptCompile Include="js\items.ts" />
-    <TypeScriptCompile Include="js\loader.ts" />
-    <TypeScriptCompile Include="js\snake.ts" />
-    <TypeScriptCompile Include="js\timer.ts" />
-    <TypeScriptCompile Include="js\types.ts" />
-    <Content Include="client\js\bytes.js.map" />
     <Content Include="client\tsconfig.json" />
-    <Content Include="client\ts\canvas.js.map" />
-    <Content Include="client\ts\controls.js.map" />
-    <Content Include="client\ts\game.js.map" />
-    <Content Include="client\ts\gameboard.js.map" />
-    <Content Include="client\ts\items.js.map" />
-    <Content Include="client\ts\snake.js.map" />
-    <Content Include="core\game.js.map" />
-    <Content Include="core\gameboard.js.map" />
-    <Content Include="core\snake.js.map" />
-    <Content Include="core\types.js.map" />
-    <Content Include="core\version.js.map" />
     <Content Include="css\style.css" />
     <Content Include="client\index.html" />
-    <Content Include="js\canvas.js.map" />
-    <Content Include="js\controls.js.map" />
-    <Content Include="js\game.js.map" />
-    <Content Include="js\gameboard.js.map" />
-    <Content Include="js\items.js.map" />
-    <Content Include="js\loader.js.map" />
-    <Content Include="js\snake.js.map" />
-    <Content Include="js\timer.js.map" />
-    <Content Include="js\types.js.map" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="server\server.js.map" />
     <Content Include="server\tsconfig.json" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
@@ -85,7 +65,6 @@
     <Content Include="bin\download.ps1" />
     <Content Include="bin\setup_web.cmd" />
     <Content Include="bin\node.cmd" />
-    <TypeScriptCompile Include="server\server.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
@@ -94,30 +73,34 @@
     <Folder Include="client\js\" />
     <Folder Include="client\ts\" />
     <Folder Include="core\" />
+    <Folder Include="core\js\" />
+    <Folder Include="core\ts\" />
     <Folder Include="css\" />
+    <Folder Include="server\ts\" />
     <Folder Include="typedef\" />
-    <Folder Include="js\" />
     <Folder Include="server\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="client\js\bytes.js" />
-    <Compile Include="client\ts\gameboard.js" />
-    <Compile Include="client\ts\snake.js" />
-    <Compile Include="core\game.js" />
-    <Compile Include="core\version.js" />
-    <Compile Include="js\canvas.js" />
-    <Compile Include="js\controls.js" />
-    <Compile Include="js\game.js" />
-    <Compile Include="js\gameboard.js" />
-    <Compile Include="js\items.js" />
-    <Compile Include="js\loader.js" />
-    <Compile Include="js\snake.js" />
-    <Compile Include="js\timer.js" />
-    <Compile Include="js\types.js" />
-    <Compile Include="js\version.js" />
-    <Compile Include="server\server.js" />
+    <Compile Include="core\ts\timer.js" />
+    <Compile Include="core\ts\version.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Any CPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>echo window['version'] = '$([System.DateTime]::Now.ToString("g"))'; &gt; $(SolutionDir)\Bytes\core\ts\version.ts</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)\build.bat</PostBuildEvent>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
   <ProjectExtensions>

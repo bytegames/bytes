@@ -1,8 +1,7 @@
 ﻿namespace Bytes {
 
-    export namespace Client {
 
-        export class SnakeSegment extends Bytes.SnakeSegment implements IGameObject {
+        export class SnakeSegment extends GameObject {
 
             public color: string = "#04B404";
 

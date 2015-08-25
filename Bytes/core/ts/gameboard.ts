@@ -1,5 +1,7 @@
 ﻿namespace Bytes {
 
+    export type GameBoardGrid = number[][];
+
     export interface IGameBoard {
 
         backgroundColor: string;
@@ -10,13 +12,12 @@
         height: number;
         width: number;
 
-        grid: GameObject[][];
+        grid: GameBoardGrid;
 
         init(board: GameBoard);
-        init();
-        
+        init();        
     }
-    
+
     export class GameBoard implements IGameBoard {
 
         public backgroundColor: string = "#000A1F";
@@ -27,13 +28,13 @@
         public height;
         public width;
 
-        public grid: GameObject[][];
+        public grid: GameBoardGrid;
 
         public placeObject(object: GameObject, position: Position) {
 
-            this.grid[position.X][position.Y] = object;
+            this.grid[position.X][position.Y] = object.index;
             object.position = Position.copy(position);
-            object.updated = true;
+            // object.updated = true;
         }
 
         public placeAtRandom(object: GameObject) {
@@ -83,22 +84,7 @@
             }
         }
 
-        public static draw() {
-
-            Canvas.fill(GameBoard.backgroundColor);
-
-            var size = GameBoard.blockSize;
-            for (var cx = 0; cx < GameBoard.width; cx++) {
-                for (var cy = 0; cy < GameBoard.height; cy++) {
-
-                    // Canvas.drawRect(cx * size, cy * size, size, size, GameBoard.gridColor);
-
-                    if (GameBoard.grid[cx][cy]) {
-                        GameBoard.grid[cx][cy].draw();
-                    }
-                }
-            }
-        }
+     
     }
 }
     

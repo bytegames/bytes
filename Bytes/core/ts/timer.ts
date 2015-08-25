@@ -1,4 +1,4 @@
-﻿module Bytes {
+﻿namespace Bytes {
     
     export enum ClockType {
         TIMED,
