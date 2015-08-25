@@ -4,7 +4,7 @@ var Bytes;
         function Commands() {
         }
         Commands.start = function () {
-            Bytes.Game.start();
+            // Game.start();
         };
         Commands.updatePlayerControl = function () {
         };

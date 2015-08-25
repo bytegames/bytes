@@ -21,8 +21,9 @@
         index: number;
         position: Position;
 
-        constructor(position: Position) {
+        constructor(position?: Position) {
 
+            position && (this.position = position);
         }
 
         handleCollision(object: GameObject) {

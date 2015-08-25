@@ -47,11 +47,6 @@ var Bytes;
             this.players = {};
             console.log("Game created");
         }
-        Object.defineProperty(Game, "public", {
-            get: function () { },
-            enumerable: true,
-            configurable: true
-        });
         Game.prototype.init = function () {
             if (this.isRunning) {
                 console.log("Game must be stopped before calling init()");
@@ -59,7 +54,7 @@ var Bytes;
             }
             this.board = new Bytes.GameBoard();
             this.objectList = new Bytes.ObjectList();
-            this.clock = new Bytes.Timer(Bytes.GameDifficulty.DIFFICULT, 0, Game.onClockTick);
+            this.clock = new Bytes.Timer(Bytes.GameDifficulty.DIFFICULT, 0, this.onClockTick);
             // Player 1 top left, facing right
             this.players[Bytes.PlayerNumber.ONE] = new Bytes.Player(Bytes.PlayerNumber.ONE, { X: 0, Y: 0 });
             this.players[Bytes.PlayerNumber.ONE].direction = Bytes.Direction.RIGHT;
@@ -70,41 +65,41 @@ var Bytes;
             //Controls.init();
             //Game.htmlBody = <HTMLBodyElement>document.querySelector("body");
             //Game.htmlBody.onkeyup = Controls.onKeyUp;
-            Game.ready();
+            this.ready();
         };
-        Game.ready = function () {
+        Game.prototype.ready = function () {
             // Game.player1.direction = Direction.RIGHT;
             // GUI.draw();
         };
-        Game.start = function () {
-            if (Game.isRunning) {
+        Game.prototype.start = function () {
+            if (this.isRunning) {
                 return;
             }
-            if (Game.clock.isPaused) {
-                return Game.togglePause();
+            if (this.clock.isPaused) {
+                return this.togglePause();
             }
-            Game.isRunning = true;
-            Game.clock.start();
+            this.isRunning = true;
+            this.clock.start();
         };
-        Game.togglePause = function () {
-            if (Game.clock.isPaused) {
-                Game.clock.resume();
-                Game.isRunning = true;
+        Game.prototype.togglePause = function () {
+            if (this.clock.isPaused) {
+                this.clock.resume();
+                this.isRunning = true;
             }
             else {
-                Game.clock.pause();
-                Game.isRunning = false;
+                this.clock.pause();
+                this.isRunning = false;
             }
         };
-        Game.reset = function () {
-            Game.clock && Game.clock.stop();
-            Game.isRunning = false;
-            Game.ready();
+        Game.prototype.reset = function () {
+            this.clock && this.clock.stop();
+            this.isRunning = false;
+            this.ready();
         };
-        Game.onClockTick = function () {
+        Game.prototype.onClockTick = function () {
             // Controls.processInput();
             // Game.player1.processTurn();
-            if (Game.clock.tick == Bytes.ClockTick.EVEN) {
+            if (this.clock.tick == Bytes.ClockTick.EVEN) {
                 // TODO: Move this to item randomizer class
                 Game.coinCounter += 1;
                 if (Game.coinCounter >= 20) {
@@ -114,16 +109,16 @@ var Bytes;
                         if (!Math.floor(Math.random() + probability)) {
                             if (!Math.floor(Math.random() + .5)) {
                                 var coin = Bytes.Coin.generateRandom();
-                                Game.board.placeAtRandom(coin);
+                                this.board.placeAtRandom(coin);
                             }
                             else {
                                 if (!Math.floor(Math.random() + .5)) {
                                     var slowPlayer = new Bytes.SlowPlayer();
-                                    Bytes.GameBoard.placeAtRandom(slowPlayer);
+                                    this.board.placeAtRandom(slowPlayer);
                                 }
                                 else {
                                     var fastPlayer = new Bytes.FastPlayer();
-                                    Bytes.GameBoard.placeAtRandom(fastPlayer);
+                                    this.board.placeAtRandom(fastPlayer);
                                 }
                             }
                             console.log("Coins on board: " + Bytes.Coin.coinsActive);
@@ -131,10 +126,9 @@ var Bytes;
                     }
                 }
             }
-            Bytes.GameBoard.draw();
-            GUI.draw();
+            // GameBoard.draw();
+            // GUI.draw();
         };
-        Game.gameIndex = {};
         // TODO: Move this to item randomizer class
         Game.coinCounter = 0;
         return Game;

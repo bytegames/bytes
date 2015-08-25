@@ -58,7 +58,12 @@
     <Content Include="client\index.html" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="server\js\byteserver.js.map" />
     <Content Include="server\tsconfig.json" />
+    <Content Include="server\ts\commands.js.map" />
+    <Content Include="server\ts\processor.js.map" />
+    <Content Include="server\ts\server.js.map" />
+    <Content Include="server\ts\websocketframe.js.map" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
     <Content Include="bin\ChangeConfig.ps1" />
@@ -76,6 +81,7 @@
     <Folder Include="core\js\" />
     <Folder Include="core\ts\" />
     <Folder Include="css\" />
+    <Folder Include="server\js\" />
     <Folder Include="server\ts\" />
     <Folder Include="typedef\" />
     <Folder Include="server\" />
@@ -83,6 +89,11 @@
   <ItemGroup>
     <Compile Include="core\ts\timer.js" />
     <Compile Include="core\ts\version.js" />
+    <Compile Include="server\js\byteserver.js" />
+    <Compile Include="server\ts\commands.js" />
+    <Compile Include="server\ts\processor.js" />
+    <Compile Include="server\ts\server.js" />
+    <Compile Include="server\ts\websocketframe.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Any CPU'">

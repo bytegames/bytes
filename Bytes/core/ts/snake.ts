@@ -13,11 +13,11 @@
 
             public draw() {
 
-                var boardX = (this.position.X * Game.board.blockSize);
-                var boardY = (this.position.Y * Game.board.blockSize);
-                var size = Game.board.blockSize;
+               // var boardX = (this.position.X * Game.board.blockSize);
+                //var boardY = (this.position.Y * Game.board.blockSize);
+               // var size = Game.board.blockSize;
 
-                Canvas.fillRect(boardX, boardY, size, size, this.color);
+               // Canvas.fillRect(boardX, boardY, size, size, this.color);
             }
         }
 

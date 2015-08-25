@@ -63,9 +63,7 @@
     }
 
     export class Game {
-
-        public static gameIndex: IGameIndex = {};
-        public static get 
+        
         public id: number; 
 
         public resolution: IGameResolution = GameResolutions.default;
@@ -97,7 +95,7 @@
 
             this.board = new GameBoard();
             this.objectList = new ObjectList();
-            this.clock = new Timer(GameDifficulty.DIFFICULT, 0, Game.onClockTick);
+            this.clock = new Timer(GameDifficulty.DIFFICULT, 0, this.onClockTick);
             
             // Player 1 top left, facing right
             this.players[PlayerNumber.ONE] = new Player(PlayerNumber.ONE, { X: 0, Y: 0 });
@@ -113,10 +111,10 @@
             //Game.htmlBody = <HTMLBodyElement>document.querySelector("body");
             //Game.htmlBody.onkeyup = Controls.onKeyUp;
 
-            Game.ready();
+            this.ready();
         }
 
-        static ready() {
+        public ready() {
                        
 
             
@@ -127,49 +125,49 @@
             // GUI.draw();
         }
 
-        static start() {
+        public start() {
 
-            if (Game.isRunning) {
+            if (this.isRunning) {
                 return;
             }
 
-            if (Game.clock.isPaused) {
-                return Game.togglePause();
+            if (this.clock.isPaused) {
+                return this.togglePause();
             }
 
-            Game.isRunning = true;
-            Game.clock.start();
+            this.isRunning = true;
+            this.clock.start();
         }
 
-        static togglePause() {
+        public togglePause() {
             
-            if (Game.clock.isPaused) {
-                Game.clock.resume();
-                Game.isRunning = true;
+            if (this.clock.isPaused) {
+                this.clock.resume();
+                this.isRunning = true;
             }
             else {
-                Game.clock.pause();
-                Game.isRunning = false;
+                this.clock.pause();
+                this.isRunning = false;
                 // GUI.draw();
             }
         }
 
-        static reset() {
+        public reset() {
 
-            Game.clock && Game.clock.stop();
-            Game.isRunning = false;
-            Game.ready();
+            this.clock && this.clock.stop();
+            this.isRunning = false;
+            this.ready();
         }
 
         // TODO: Move this to item randomizer class
         static coinCounter = 0;
 
-        static onClockTick() {
+        public onClockTick() {
 
             // Controls.processInput();
             // Game.player1.processTurn();
 
-            if (Game.clock.tick == ClockTick.EVEN) {
+            if (this.clock.tick == ClockTick.EVEN) {
 
                 // TODO: Move this to item randomizer class
                 Game.coinCounter += 1;
@@ -183,17 +181,17 @@
 
                             if (!Math.floor(Math.random() + .5)) {
                                 var coin = Coin.generateRandom();
-                                Game.board.placeAtRandom(coin);
+                                this.board.placeAtRandom(coin);
                             }
                             else {
 
                                 if (!Math.floor(Math.random() + .5)) {
                                     var slowPlayer = new SlowPlayer();
-                                    GameBoard.placeAtRandom(slowPlayer);
+                                    this.board.placeAtRandom(slowPlayer);
                                 }
                                 else {
                                     var fastPlayer = new FastPlayer();
-                                    GameBoard.placeAtRandom(fastPlayer);
+                                    this.board.placeAtRandom(fastPlayer);
                                 }
                             }
 
@@ -203,8 +201,8 @@
                 }
             }
 
-            GameBoard.draw();
-            GUI.draw();
+            // GameBoard.draw();
+            // GUI.draw();
         }
     }
     

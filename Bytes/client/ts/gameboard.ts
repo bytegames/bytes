@@ -69,7 +69,7 @@
                         if (this.grid[x][y]) {
 
                             var index = this.grid[x][y];
-                            var gameObject = Game.ob
+                            // var gameObject = Game.ob
                             // this.grid[x][y].draw();
                         }
                     }

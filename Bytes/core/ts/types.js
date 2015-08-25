@@ -11,6 +11,7 @@ var Bytes;
     Bytes.GameDifficulty = GameDifficulty;
     var GameObject = (function () {
         function GameObject(position) {
+            position && (this.position = position);
         }
         GameObject.prototype.handleCollision = function (object) {
         };

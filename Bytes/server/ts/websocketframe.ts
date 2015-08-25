@@ -14,6 +14,7 @@
 
             return (this.buffer[0] >> 4) === 8;
         }
+
         public set fin(state: boolean) {
 
             this.buffer[0] ^= state ? 8 : 0;

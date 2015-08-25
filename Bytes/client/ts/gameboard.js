@@ -48,7 +48,6 @@ var Bytes;
                         // Canvas.drawRect(cx * size, cy * size, size, size, GameBoard.gridColor);
                         if (this.grid[x][y]) {
                             var index = this.grid[x][y];
-                            var gameObject = Client.Game.ob;
                         }
                     }
                 }

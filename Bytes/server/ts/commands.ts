@@ -4,7 +4,7 @@
 
         public static start() {
 
-            Game.start();
+            // Game.start();
         }
 
         public static updatePlayerControl() {
