@@ -7,10 +7,10 @@
 
 header {
     position: relative;
-    width: 640px;
+    width: 1200px;
     height: 100px;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 20px;
     border: 1px solid white;
 }
 
@@ -44,10 +44,14 @@ header span {
 }
 
 canvas { 
-    width: 640px;
-    height: 480px;
+    width: 1200px;
+    height: 600px;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 20px;
     display:block;
     border:1px solid white
+}
+
+test {
+    color: #000;
 }

@@ -2,6 +2,8 @@
 
     export class SnakeSegment extends GameObject implements IGameObject {
 
+        public static default_length = 48
+
         public colorindex = 0
 
         public color(): string {
@@ -59,7 +61,7 @@
         public lives: number = 9000001;
 
         public segments: SnakeSegment[] = [];
-        public maxLength: number = 8;
+        public maxLength: number = Snake.default_length;
 
         constructor(position: Position) {
 
@@ -262,7 +264,7 @@
             }
 
             this.segments = [this];
-            this.maxLength = 8;
+            this.maxLength = Snake.default_length;
         }
     }
 }

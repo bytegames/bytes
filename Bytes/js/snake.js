@@ -44,6 +44,7 @@ var Bytes;
         SnakeSegment.prototype.handleCollision = function (snake) {
             snake.die();
         };
+        SnakeSegment.default_length = 48;
         return SnakeSegment;
     }(Bytes.GameObject));
     Bytes.SnakeSegment = SnakeSegment;
@@ -60,7 +61,7 @@ var Bytes;
             _this.points = 0;
             _this.lives = 9000001;
             _this.segments = [];
-            _this.maxLength = 8;
+            _this.maxLength = Snake.default_length;
             _this.isAlive = true;
             _this.position = position;
             _this.segments[0] = _this;
@@ -204,7 +205,7 @@ var Bytes;
                 Bytes.GameBoard.removeObjectAt(this.segments[i].position);
             }
             this.segments = [this];
-            this.maxLength = 8;
+            this.maxLength = Snake.default_length;
         };
         return Snake;
     }(SnakeSegment));
