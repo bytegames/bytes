@@ -68,7 +68,62 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\canvas.js">
+      <DependentUpon>canvas.ts</DependentUpon>
+    </Content>
+    <Content Include="js\controls.js">
+      <DependentUpon>controls.ts</DependentUpon>
+    </Content>
+    <Content Include="js\game.js">
+      <DependentUpon>game.ts</DependentUpon>
+    </Content>
+    <Content Include="js\gameboard.js">
+      <DependentUpon>gameboard.ts</DependentUpon>
+    </Content>
+    <Content Include="js\items.js">
+      <DependentUpon>items.ts</DependentUpon>
+    </Content>
+    <Content Include="js\loader.js">
+      <DependentUpon>loader.ts</DependentUpon>
+    </Content>
+    <Content Include="js\snake.js">
+      <DependentUpon>snake.ts</DependentUpon>
+    </Content>
+    <Content Include="js\timer.js">
+      <DependentUpon>timer.ts</DependentUpon>
+    </Content>
+    <Content Include="js\types.js">
+      <DependentUpon>types.ts</DependentUpon>
+    </Content>
+    <Content Include="js\version.js" />
     <Content Include="packages.config" />
+    <Content Include="js\canvas.js.map">
+      <DependentUpon>canvas.ts</DependentUpon>
+    </Content>
+    <Content Include="js\controls.js.map">
+      <DependentUpon>controls.ts</DependentUpon>
+    </Content>
+    <Content Include="js\game.js.map">
+      <DependentUpon>game.ts</DependentUpon>
+    </Content>
+    <Content Include="js\gameboard.js.map">
+      <DependentUpon>gameboard.ts</DependentUpon>
+    </Content>
+    <Content Include="js\snake.js.map">
+      <DependentUpon>snake.ts</DependentUpon>
+    </Content>
+    <Content Include="js\timer.js.map">
+      <DependentUpon>timer.ts</DependentUpon>
+    </Content>
+    <Content Include="js\types.js.map">
+      <DependentUpon>types.ts</DependentUpon>
+    </Content>
+    <Content Include="js\items.js.map">
+      <DependentUpon>items.ts</DependentUpon>
+    </Content>
+    <Content Include="js\loader.js.map">
+      <DependentUpon>loader.ts</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -95,6 +150,8 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="js\gameboard.ts" />
+    <TypeScriptCompile Include="js\items.ts" />
+    <TypeScriptCompile Include="js\loader.ts" />
     <TypeScriptCompile Include="js\snake.ts" />
     <TypeScriptCompile Include="js\timer.ts" />
     <TypeScriptCompile Include="js\types.ts" />
@@ -114,7 +171,7 @@
     </TypeScriptOutFile>
     <TypeScriptOutDir>
     </TypeScriptOutDir>
-    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptSourceMap>True</TypeScriptSourceMap>
     <TypeScriptMapRoot />
@@ -148,6 +205,9 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>echo window.version = '$([System.DateTime]::Now.ToString("g"))'; &gt; $(SolutionDir)\Bytes\js\version.js</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -2,8 +2,8 @@
 
     export class Canvas {
 
-        public static width: number = 640;
-        public static height: number = 320;
+        public static width: number = 1200;
+        public static height: number = 600;
 
         public static el: HTMLCanvasElement;
         public static context: CanvasRenderingContext2D;
@@ -19,16 +19,17 @@
 
         public static fill(color: string) {
 
+            Canvas.context.beginPath();
             Canvas.context.rect(0, 0, Canvas.width, Canvas.height);
             Canvas.context.fillStyle = color;
-            Canvas.context.fill();
+            Canvas.context.fill();            
         }
 
         public static fillRect(x: number, y: number, w: number, h: number, color: string) {
 
+            Canvas.context.beginPath();
             Canvas.context.fillStyle = color;
-            Canvas.context.fillRect(x, y, w, h);
-            Canvas.context.stroke();
+            Canvas.context.fillRect(x, y, w, h);            
         }
 
         public static drawRect(x: number, y: number, w: number, h: number, color: string) {

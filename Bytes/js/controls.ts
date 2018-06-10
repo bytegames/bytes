@@ -2,17 +2,17 @@
 
     export class Buttons {
 
-        static play: HTMLButtonElement;
+        static start: HTMLButtonElement;
         static pause: HTMLButtonElement;
         static reset: HTMLButtonElement;
 
         static init() {
             
-            Buttons.play = <HTMLButtonElement>document.querySelector("#play");
+            Buttons.start = <HTMLButtonElement>document.querySelector("#start");
             Buttons.pause = <HTMLButtonElement>document.querySelector("#pause");
             Buttons.reset = <HTMLButtonElement>document.querySelector("#reset");
 
-            Buttons.play.onclick = Controls.onClickPlay;
+            Buttons.start.onclick = Controls.onClickPlay;
             Buttons.pause.onclick = Controls.onClickPause;
             Buttons.reset.onclick = Controls.onClickReset;
         }
@@ -22,11 +22,16 @@
 
         static header: HTMLElement;            
         static lives: HTMLElement; 
-        
+        static score: HTMLElement;
+        static build: HTMLElement;
+
         static init() {
 
             GUI.header = <HTMLElement>document.querySelector("header");
+            GUI.score = <HTMLElement>document.querySelector("#score");
             GUI.lives = <HTMLElement>document.querySelector("#lives");
+            GUI.build = <HTMLElement>document.querySelector("#build");
+            GUI.build.innerText = "Build: " + window['version'];
         }
 
         static draw() {
@@ -34,6 +39,10 @@
             GUI.lives.innerText = Game.isRunning
                 ? "Lives: " + Game.player1.lives
                 : "Press Start";
+
+            GUI.score.innerText = Game.isRunning
+                ? "Score: " + Game.player1.points
+                : "Hi Score: " + Game.hiScore;            
         }
     }
 
@@ -52,7 +61,7 @@
 
         static onClickPause() {
 
-            Game.pause();
+            Game.togglePause();
         }
 
         static onClickReset() {
@@ -85,16 +94,21 @@
                         break;
 
                     case 37:
+                    
                         if (Game.player1.direction != Direction.RIGHT) {
                             Game.player1.direction = Direction.LEFT;
                         }
                         break;
 
                     case 39:
+
                         if (Game.player1.direction != Direction.LEFT) {
                             Game.player1.direction = Direction.RIGHT;
                         }
                         break;
+
+                    case 32:
+                        Game.player1.jump()
                 }
 
                 Controls.lastKeyPressed = null;

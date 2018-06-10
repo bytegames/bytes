@@ -1,35 +1,41 @@
 var Bytes;
 (function (Bytes) {
-    var Buttons = (function () {
+    var Buttons = /** @class */ (function () {
         function Buttons() {
         }
         Buttons.init = function () {
-            Buttons.play = document.querySelector("#play");
+            Buttons.start = document.querySelector("#start");
             Buttons.pause = document.querySelector("#pause");
             Buttons.reset = document.querySelector("#reset");
-            Buttons.play.onclick = Controls.onClickPlay;
+            Buttons.start.onclick = Controls.onClickPlay;
             Buttons.pause.onclick = Controls.onClickPause;
             Buttons.reset.onclick = Controls.onClickReset;
         };
         return Buttons;
-    })();
+    }());
     Bytes.Buttons = Buttons;
-    var GUI = (function () {
+    var GUI = /** @class */ (function () {
         function GUI() {
         }
         GUI.init = function () {
             GUI.header = document.querySelector("header");
+            GUI.score = document.querySelector("#score");
             GUI.lives = document.querySelector("#lives");
+            GUI.build = document.querySelector("#build");
+            GUI.build.innerText = "Build: " + window['version'];
         };
         GUI.draw = function () {
             GUI.lives.innerText = Bytes.Game.isRunning
                 ? "Lives: " + Bytes.Game.player1.lives
                 : "Press Start";
+            GUI.score.innerText = Bytes.Game.isRunning
+                ? "Score: " + Bytes.Game.player1.points
+                : "Hi Score: " + Bytes.Game.hiScore;
         };
         return GUI;
-    })();
+    }());
     Bytes.GUI = GUI;
-    var Controls = (function () {
+    var Controls = /** @class */ (function () {
         function Controls() {
         }
         Controls.init = function () {
@@ -40,7 +46,7 @@ var Bytes;
             Bytes.Game.start();
         };
         Controls.onClickPause = function () {
-            Bytes.Game.pause();
+            Bytes.Game.togglePause();
         };
         Controls.onClickReset = function () {
             Bytes.Game.reset();
@@ -71,13 +77,14 @@ var Bytes;
                             Bytes.Game.player1.direction = Bytes.Direction.RIGHT;
                         }
                         break;
+                    case 32:
+                        Bytes.Game.player1.jump();
                 }
                 Controls.lastKeyPressed = null;
             }
         };
         Controls.lastKeyPressed = null;
         return Controls;
-    })();
+    }());
     Bytes.Controls = Controls;
 })(Bytes || (Bytes = {}));
-//# sourceMappingURL=controls.js.map

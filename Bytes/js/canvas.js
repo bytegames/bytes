@@ -1,6 +1,6 @@
 var Bytes;
 (function (Bytes) {
-    var Canvas = (function () {
+    var Canvas = /** @class */ (function () {
         function Canvas() {
         }
         Canvas.init = function (el) {
@@ -10,14 +10,15 @@ var Bytes;
             Canvas.context = el.getContext("2d");
         };
         Canvas.fill = function (color) {
+            Canvas.context.beginPath();
             Canvas.context.rect(0, 0, Canvas.width, Canvas.height);
             Canvas.context.fillStyle = color;
             Canvas.context.fill();
         };
         Canvas.fillRect = function (x, y, w, h, color) {
+            Canvas.context.beginPath();
             Canvas.context.fillStyle = color;
             Canvas.context.fillRect(x, y, w, h);
-            Canvas.context.stroke();
         };
         Canvas.drawRect = function (x, y, w, h, color) {
             Canvas.context.beginPath();
@@ -26,10 +27,9 @@ var Bytes;
             Canvas.context.rect(x, y, w, h);
             Canvas.context.stroke();
         };
-        Canvas.width = 640;
-        Canvas.height = 320;
+        Canvas.width = 1200;
+        Canvas.height = 600;
         return Canvas;
-    })();
+    }());
     Bytes.Canvas = Canvas;
 })(Bytes || (Bytes = {}));
-//# sourceMappingURL=canvas.js.map
