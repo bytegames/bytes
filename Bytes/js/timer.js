@@ -1,16 +1,16 @@
 var Bytes;
 (function (Bytes) {
+    var ClockType;
     (function (ClockType) {
         ClockType[ClockType["TIMED"] = 0] = "TIMED";
         ClockType[ClockType["INFINITE"] = 1] = "INFINITE";
-    })(Bytes.ClockType || (Bytes.ClockType = {}));
-    var ClockType = Bytes.ClockType;
+    })(ClockType = Bytes.ClockType || (Bytes.ClockType = {}));
+    var ClockTick;
     (function (ClockTick) {
         ClockTick[ClockTick["EVEN"] = 0] = "EVEN";
         ClockTick[ClockTick["ODD"] = 1] = "ODD";
-    })(Bytes.ClockTick || (Bytes.ClockTick = {}));
-    var ClockTick = Bytes.ClockTick;
-    var Timer = (function () {
+    })(ClockTick = Bytes.ClockTick || (Bytes.ClockTick = {}));
+    var Timer = /** @class */ (function () {
         function Timer(interval, duration, elaspedHandler) {
             this.tick = ClockTick.EVEN;
             this.onElapsed = function () { console.log("No clock event"); };
@@ -53,7 +53,6 @@ var Bytes;
             this.isPaused = false;
         };
         return Timer;
-    })();
+    }());
     Bytes.Timer = Timer;
 })(Bytes || (Bytes = {}));
-//# sourceMappingURL=timer.js.map

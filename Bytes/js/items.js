@@ -1,27 +1,32 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var Bytes;
 (function (Bytes) {
-    var SlowPlayerEvent = (function (_super) {
+    var SlowPlayerEvent = /** @class */ (function (_super) {
         __extends(SlowPlayerEvent, _super);
         function SlowPlayerEvent() {
-            _super.apply(this, arguments);
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         return SlowPlayerEvent;
-    })(Bytes.GameEvent);
+    }(Bytes.GameEvent));
     Bytes.SlowPlayerEvent = SlowPlayerEvent;
-    var SlowPlayer = (function (_super) {
+    var SlowPlayer = /** @class */ (function (_super) {
         __extends(SlowPlayer, _super);
         function SlowPlayer() {
-            _super.call(this);
-            this.color = "#3366FF";
-            this.index = SlowPlayer.itemsIndex;
+            var _this = _super.call(this) || this;
+            _this.color = "#3366FF";
+            _this.index = SlowPlayer.itemsIndex;
             ++SlowPlayer.itemsIndex;
             ++SlowPlayer.itemsActive;
+            return _this;
         }
         SlowPlayer.prototype.handleCollision = function (snake) {
             snake.setSpeed(Bytes.Speed.SLOW);
@@ -44,16 +49,17 @@ var Bytes;
         SlowPlayer.itemsIndex = 0;
         SlowPlayer.itemsActive = 0;
         return SlowPlayer;
-    })(Bytes.GameObject);
+    }(Bytes.GameObject));
     Bytes.SlowPlayer = SlowPlayer;
-    var FastPlayer = (function (_super) {
+    var FastPlayer = /** @class */ (function (_super) {
         __extends(FastPlayer, _super);
         function FastPlayer() {
-            _super.call(this);
-            this.color = "#3366FF";
-            this.index = SlowPlayer.itemsIndex;
+            var _this = _super.call(this) || this;
+            _this.color = "#3366FF";
+            _this.index = SlowPlayer.itemsIndex;
             ++SlowPlayer.itemsIndex;
             ++SlowPlayer.itemsActive;
+            return _this;
         }
         FastPlayer.prototype.handleCollision = function (snake) {
             snake.setSpeed(Bytes.Speed.FAST);
@@ -76,16 +82,17 @@ var Bytes;
         FastPlayer.itemsIndex = 0;
         FastPlayer.itemsActive = 0;
         return FastPlayer;
-    })(Bytes.GameObject);
+    }(Bytes.GameObject));
     Bytes.FastPlayer = FastPlayer;
-    var Coin = (function (_super) {
+    var Coin = /** @class */ (function (_super) {
         __extends(Coin, _super);
         function Coin(value) {
-            _super.call(this);
-            this.value = value;
-            this.index = Coin.coinsIndex;
+            var _this = _super.call(this) || this;
+            _this.value = value;
+            _this.index = Coin.coinsIndex;
             ++Coin.coinsIndex;
             ++Coin.coinsActive;
+            return _this;
         }
         Coin.generateRandom = function () {
             return new Coin(Coin.values[Math.floor(Math.random() * Coin.values.length)]);
@@ -118,7 +125,6 @@ var Bytes;
         Coin.coinsIndex = 0;
         Coin.coinsActive = 0;
         return Coin;
-    })(Bytes.GameObject);
+    }(Bytes.GameObject));
     Bytes.Coin = Coin;
 })(Bytes || (Bytes = {}));
-//# sourceMappingURL=items.js.map

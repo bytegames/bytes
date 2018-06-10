@@ -1,6 +1,6 @@
 var Bytes;
 (function (Bytes) {
-    var Canvas = (function () {
+    var Canvas = /** @class */ (function () {
         function Canvas() {
         }
         Canvas.init = function (el) {
@@ -30,7 +30,6 @@ var Bytes;
         Canvas.width = 1200;
         Canvas.height = 600;
         return Canvas;
-    })();
+    }());
     Bytes.Canvas = Canvas;
 })(Bytes || (Bytes = {}));
-//# sourceMappingURL=canvas.js.map

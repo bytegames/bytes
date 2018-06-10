@@ -1,14 +1,14 @@
 var Bytes;
 (function (Bytes) {
-    var GameDifficulty = (function () {
+    var GameDifficulty = /** @class */ (function () {
         function GameDifficulty() {
         }
         GameDifficulty.EASY = 300;
         GameDifficulty.MEDIUM = 150;
         GameDifficulty.DIFFICULT = 50;
         return GameDifficulty;
-    })();
-    var Game = (function () {
+    }());
+    var Game = /** @class */ (function () {
         function Game() {
         }
         Game.init = function () {
@@ -90,7 +90,6 @@ var Bytes;
         // TODO: Move this to item randomizer class
         Game.coinCounter = 0;
         return Game;
-    })();
+    }());
     Bytes.Game = Game;
 })(Bytes || (Bytes = {}));
-//# sourceMappingURL=game.js.map

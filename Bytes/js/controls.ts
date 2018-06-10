@@ -94,16 +94,21 @@
                         break;
 
                     case 37:
+                    
                         if (Game.player1.direction != Direction.RIGHT) {
                             Game.player1.direction = Direction.LEFT;
                         }
                         break;
 
                     case 39:
+
                         if (Game.player1.direction != Direction.LEFT) {
                             Game.player1.direction = Direction.RIGHT;
                         }
                         break;
+
+                    case 32:
+                        Game.player1.jump()
                 }
 
                 Controls.lastKeyPressed = null;

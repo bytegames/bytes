@@ -1,6 +1,6 @@
 var Bytes;
 (function (Bytes) {
-    var GameBoard = (function () {
+    var GameBoard = /** @class */ (function () {
         function GameBoard() {
         }
         GameBoard.placeObject = function (object, position) {
@@ -57,7 +57,6 @@ var Bytes;
         GameBoard.gridColor = "#001F5C";
         GameBoard.blockSize = 8;
         return GameBoard;
-    })();
+    }());
     Bytes.GameBoard = GameBoard;
 })(Bytes || (Bytes = {}));
-//# sourceMappingURL=gameboard.js.map

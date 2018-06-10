@@ -1,6 +1,6 @@
 var Bytes;
 (function (Bytes) {
-    var Loader = (function () {
+    var Loader = /** @class */ (function () {
         function Loader() {
         }
         // Initialize Loader
@@ -37,8 +37,7 @@ var Bytes;
         // Track number of files loaded
         Loader.counter = 0;
         return Loader;
-    })();
+    }());
     Bytes.Loader = Loader;
 })(Bytes || (Bytes = {}));
 Bytes.Loader.init();
-//# sourceMappingURL=loader.js.map

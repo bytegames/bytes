@@ -1,6 +1,6 @@
 var Bytes;
 (function (Bytes) {
-    var Buttons = (function () {
+    var Buttons = /** @class */ (function () {
         function Buttons() {
         }
         Buttons.init = function () {
@@ -12,9 +12,9 @@ var Bytes;
             Buttons.reset.onclick = Controls.onClickReset;
         };
         return Buttons;
-    })();
+    }());
     Bytes.Buttons = Buttons;
-    var GUI = (function () {
+    var GUI = /** @class */ (function () {
         function GUI() {
         }
         GUI.init = function () {
@@ -33,9 +33,9 @@ var Bytes;
                 : "Hi Score: " + Bytes.Game.hiScore;
         };
         return GUI;
-    })();
+    }());
     Bytes.GUI = GUI;
-    var Controls = (function () {
+    var Controls = /** @class */ (function () {
         function Controls() {
         }
         Controls.init = function () {
@@ -77,13 +77,14 @@ var Bytes;
                             Bytes.Game.player1.direction = Bytes.Direction.RIGHT;
                         }
                         break;
+                    case 32:
+                        Bytes.Game.player1.jump();
                 }
                 Controls.lastKeyPressed = null;
             }
         };
         Controls.lastKeyPressed = null;
         return Controls;
-    })();
+    }());
     Bytes.Controls = Controls;
 })(Bytes || (Bytes = {}));
-//# sourceMappingURL=controls.js.map
