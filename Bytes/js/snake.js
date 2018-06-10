@@ -10,7 +10,7 @@ var Bytes;
         __extends(SnakeSegment, _super);
         function SnakeSegment(position) {
             _super.call(this);
-            this.color = "#04B404";
+            this.color = "#220400";
             this.position = position;
         }
         SnakeSegment.prototype.draw = function () {
@@ -35,7 +35,7 @@ var Bytes;
             this.isAlive = false;
             this.hiScore = 0;
             this.points = 0;
-            this.lives = 5;
+            this.lives = 50000;
             this.segments = [];
             this.maxLength = 8;
             this.isAlive = true;
