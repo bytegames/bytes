@@ -2,15 +2,10 @@
 import { Coin, Snake, SlowPlayer, FastPlayer } from './objects/index.js'
 import { Board, Canvas, Console, Controls, GUI } from './ux/index.js'
 
-enum GameDifficulty {
-    EASY = 300,
-    MEDIUM = 150,
-    DIFFICULT = 50
-}
+enum GameDifficulty { EASY = 300, MEDIUM = 150, DIFFICULT = 50 }
 
 export class Game {
 
-    static body: HTMLBodyElement
     static clock: Timer
     static player_one: Snake
     static hi_score: number = 0
@@ -19,8 +14,9 @@ export class Game {
     static init() {
         
         Canvas.init(<HTMLCanvasElement>document.querySelector("canvas"))
-        Game.body = <HTMLBodyElement>document.querySelector("body")
-        Game.body.onkeyup = Controls.on_key_up              
+
+        let body: HTMLBodyElement = document.querySelector("body")
+        body.onkeyup = Controls.on_key_up              
         
         Game.ready()
     }              
@@ -28,17 +24,14 @@ export class Game {
     static ready() {
         
         Console.init()
-
         Board.init()
         Board.draw()
-
         GUI.init()
         GUI.draw()
 
         Game.player_one = new Snake({ X: 0, Y: 0 })
         Game.player_one.direction = Direction.RIGHT
-
-        Game.clock = new Timer(GameDifficulty.DIFFICULT, 0, Game.onClockTick)
+        Game.clock = new Timer(GameDifficulty.DIFFICULT, 0, Game.on_clock_tick)
     }
 
     static start() {
@@ -72,7 +65,7 @@ export class Game {
     // TODO: Move this to item randomizer class
     static coinCounter = 0
 
-    static onClockTick() {
+    static on_clock_tick() {
                                             
         Controls.process_input()
         Game.player_one.process_turn()   
@@ -82,6 +75,7 @@ export class Game {
             // TODO: Move this to item randomizer class
             Game.coinCounter += 1
             if (Game.coinCounter >= 2) {
+
                 Game.coinCounter = 0
 
                 if (!Math.floor(Math.random() + .5)) {
@@ -104,8 +98,6 @@ export class Game {
                                 Board.place_at_random(fastPlayer)
                             }                                
                         }
-
-                        console.log("Coins on board: " + Coin.coins_active)
                     }
                 }
             }

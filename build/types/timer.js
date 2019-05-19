@@ -25,7 +25,6 @@ export class Timer {
             }
         };
         this.interval = interval;
-        this.duration = duration;
         this.handler = handler;
         this.type = (duration == 0) ? ClockType.INFINITE : ClockType.TIMED;
     }

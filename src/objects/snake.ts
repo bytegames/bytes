@@ -2,9 +2,11 @@ import { Speed, Direction, Position, ScreenEdge, ClockTick, IPlayerObject, IGame
 import { SnakeSegment } from './snakesegment.js'
 import { Board } from '../ux/index.js'
 import { Game } from '../game.js'
+import { IDrawable } from '../types/gameobjects.js';
 
 export class Snake extends SnakeSegment implements IPlayerObject {
 
+	public static default_length = 48
 	public jump_distance: number = 8
 
 	public skip_next_turn: boolean = false
@@ -25,7 +27,6 @@ export class Snake extends SnakeSegment implements IPlayerObject {
 	constructor(position: Position) {
 
 		super(position)
-		
 		this.position = position
 		this.segments[0] = this
 		this.is_alive = true
@@ -56,7 +57,7 @@ export class Snake extends SnakeSegment implements IPlayerObject {
 				break
 		}
 
-		this.updateBoard(position)
+		this.update_board(position)
 	}
 
 	public on_hit_screen_edge(edge: ScreenEdge) {
@@ -163,16 +164,16 @@ export class Snake extends SnakeSegment implements IPlayerObject {
 			}
 
 			if (Board.grid[pos.X][pos.Y]) {
-				var object: IGameObject = Board.grid[pos.X][pos.Y]
+				var object: IGameObject = <IGameObject>Board.grid[pos.X][pos.Y]
 				object.handle_collision(this)
 			}
 		}
 		
 		if (!this.is_alive) { this.destroy() }
-		else if (!this.hit_detected) { this.updateBoard(pos) }
+		else if (!this.hit_detected) { this.update_board(pos) }
 	}
 
-	private updateBoard(pos: Position) {
+	private update_board(pos: Position) {
 
 		let lastPosition = Position.copy(this.position)
 		for (var i = 0, ii = this.segments.length; i != ii; i++) {

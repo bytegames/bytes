@@ -26,4 +26,3 @@ export class SnakeSegment {
     }
     handle_collision(snake) { snake.die(); }
 }
-SnakeSegment.default_length = 48;

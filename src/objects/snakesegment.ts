@@ -6,8 +6,6 @@ import { Snake } from './snake.js'
 
 export class SnakeSegment implements IGameObject {
 
-    public static default_length = 48
-
     public position: Position
     
     public color_index = 0

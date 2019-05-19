@@ -37,7 +37,7 @@ export class Controls {
                 }
                 break
 
-            case 32:
+            case GameKey.SPACEBAR:
                 Game.player_one.jump()
         }
 

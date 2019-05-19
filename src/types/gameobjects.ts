@@ -1,13 +1,15 @@
 import { Position } from './position.js'
 import { Snake } from '../objects/snake.js'
 
-interface Drawable { draw(): void }
-
-export interface IPlayerObject extends Drawable {
+export interface IDrawable {
 	position: Position
+	draw(): void 
 }
 
-export interface IGameObject extends Drawable {
-	position: Position
+export interface IPlayerObject extends IDrawable {
+
+}
+
+export interface IGameObject extends IDrawable {
 	handle_collision(object: Snake): void
 }

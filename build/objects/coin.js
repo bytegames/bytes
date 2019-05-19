@@ -15,17 +15,18 @@ export class Coin {
         this.destroy();
     }
     draw() {
-        if (this.position) {
-            let x = (this.position.X * Board.block_size) + (Board.block_size / 2);
-            let y = (this.position.Y * Board.block_size) + (Board.block_size / 2);
-            let r = (Board.block_size / 2) - 1;
-            Canvas.context.beginPath();
-            Canvas.context.arc(x, y, r, 0, 2 * Math.PI, false);
-            Canvas.context.strokeStyle = "#FFFF00";
-            Canvas.context.fillStyle = "#CCCC00";
-            Canvas.context.stroke();
-            Canvas.context.fill();
+        if (!this.position) {
+            return;
         }
+        let x = (this.position.X * Board.block_size) + (Board.block_size / 2);
+        let y = (this.position.Y * Board.block_size) + (Board.block_size / 2);
+        let r = (Board.block_size / 2) - 1;
+        Canvas.context.beginPath();
+        Canvas.context.arc(x, y, r, 0, 2 * Math.PI, false);
+        Canvas.context.strokeStyle = "#FFFF00";
+        Canvas.context.fillStyle = "#CCCC00";
+        Canvas.context.stroke();
+        Canvas.context.fill();
     }
     destroy() {
         Board.remove_object_at(this.position);

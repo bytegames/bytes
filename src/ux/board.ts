@@ -1,4 +1,4 @@
-﻿import { IGameObject } from '../types/gameobjects.js'
+﻿import { IDrawable } from '../types/gameobjects.js'
 import { Position } from '../types/position.js'
 import { Canvas } from './canvas.js'
 
@@ -11,9 +11,9 @@ export class Board {
     public static height = 0
     public static width = 0
 
-    public static grid: IGameObject[][]
+    public static grid: IDrawable[][]
 
-    public static place_object(object: IGameObject, position: Position) {
+    public static place_object(object: IDrawable, position: Position) {
 
         Board.grid[position.X][position.Y] = object
         object.position = Position.copy(position)
@@ -24,19 +24,19 @@ export class Board {
         Board.grid[position.X][position.Y] = null
     }
 
-    public static move_object(object: IGameObject, newPosition: Position) {
+    public static move_object(object: IDrawable, newPosition: Position) {
 
         Board.remove_object_at(object.position)
         Board.place_object(object, newPosition)            
     }
 
-    public static place_at_random(object: IGameObject) {
+    public static place_at_random(object: IDrawable) {
 
         var position = Board.generate_random_position()
         Board.place_object(object, position)
     }
 
-    public static move_to_random(object: IGameObject) {
+    public static move_to_random(object: IDrawable) {
 
         var position = Board.generate_random_position()
         Board.move_object(object, position)

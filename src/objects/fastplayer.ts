@@ -2,7 +2,7 @@ import { Speed, Position, IGameObject } from '../types/index.js'
 import { Board, Canvas } from '../ux/index.js'
 import { Snake, Coin } from './index.js'
 
-export class FastPlayer  implements IGameObject {
+export class FastPlayer implements IGameObject {
 
 	public static instances: { [index: number]: Coin } = { }
 	public static items_index: number = 0

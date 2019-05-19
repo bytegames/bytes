@@ -37,7 +37,7 @@ export class Snake extends SnakeSegment {
                 position.X += this.jump_distance;
                 break;
         }
-        this.updateBoard(position);
+        this.update_board(position);
     }
     on_hit_screen_edge(edge) {
         switch (edge) {
@@ -130,10 +130,10 @@ export class Snake extends SnakeSegment {
             this.destroy();
         }
         else if (!this.hit_detected) {
-            this.updateBoard(pos);
+            this.update_board(pos);
         }
     }
-    updateBoard(pos) {
+    update_board(pos) {
         let lastPosition = Position.copy(this.position);
         for (var i = 0, ii = this.segments.length; i != ii; i++) {
             let segment = this.segments[i];
@@ -157,3 +157,4 @@ export class Snake extends SnakeSegment {
         this.max_length = Snake.default_length;
     }
 }
+Snake.default_length = 48;

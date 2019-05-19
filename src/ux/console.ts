@@ -1,5 +1,4 @@
 import { Game } from '../game.js'
-import { GUI } from './gui.js'
 
 interface IButtons {
     start: HTMLButtonElement
@@ -24,7 +23,5 @@ export class Console {
         Console.buttons.start.onclick = () => { Game.start() }
         Console.buttons.pause.onclick = () => { Game.pause() }
         Console.buttons.reset.onclick = () => { Game.reset() }
-
-        GUI.init()
     }        
 }

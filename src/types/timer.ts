@@ -5,7 +5,6 @@ export class Timer {
 
     private handle: number
     private interval: number
-    private duration: number
 
     public type: ClockType
     public tick: ClockTick = ClockTick.EVEN
@@ -28,7 +27,6 @@ export class Timer {
     constructor(interval: number, duration: number, handler: () => any) {
 
         this.interval = interval
-        this.duration = duration
         this.handler = handler
         this.type = (duration == 0) ? ClockType.INFINITE : ClockType.TIMED
     }
