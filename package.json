@@ -1,0 +1,26 @@
+{
+  "name": "bytes",
+  "version": "1.0.0",
+  "description": "Basic old-school snake game built with HTML5 Canvas and TypeScript",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bytegames/bytes.git"
+  },
+  "keywords": [
+    "snake",
+    "game",
+    "retro",
+    "bytes",
+    "oldschool"
+  ],
+  "author": "Kenneth Reilly @8_bit_hacker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bytegames/bytes/issues"
+  },
+  "homepage": "https://github.com/bytegames/bytes#readme"
+}

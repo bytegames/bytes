@@ -1,23 +1,25 @@
-﻿body {
-     margin: 0; 
-     color: white;
-     background-color: black;
-     font-family: 'Courier New', Courier, monospace;
-     font-size: 13px;
+﻿html, body { height: 100% }
+
+body {
+    margin: 0; 
+    color: white;
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
 }
 
 header {
     position: relative;
-    width: 1200px;
+    width: 640px;
     height: 100px;
-    margin: auto;
-    margin-top: 20px;
     border: 1px solid white;
 }
 
 header button {
-    display: inline-block;
-    cursor: pointer;
     float: right;
     margin-right: 10px;
     margin-top: 10px;
@@ -32,6 +34,11 @@ header button {
     border: 1px solid white;
     box-shadow: 2px 2px 1px  rgb(177, 135, 201);
     font-family: 'Courier New', Courier, monospace
+}
+
+header button:hover {
+    color: #4acfef;
+    border: 1px solid#caa2d2;
 }
 
 header button:active {
@@ -62,15 +69,22 @@ header span {
     color: #DDFFDD
 }
 
-canvas { 
-    width: 1200px;
-    height: 600px;
-    margin: auto;
-    margin-top: 20px;
-    display:block;
+canvas {
+    display: block;
     border:1px solid white
 }
 
-test {
-    color: #000;
+:not(button) { cursor: default; }
+button, a { cursor: pointer; }
+
+a {
+    color: #caa2d2;
+    text-decoration: none;
+    transition: 0.18s linear all;
+}
+
+a:hover {
+    color: #4acfef;
+    letter-spacing: 1.1pt;
+    transition: 0.18s linear all;
 }
