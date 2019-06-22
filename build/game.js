@@ -10,8 +10,8 @@ var GameDifficulty;
 export class Game {
     static init() {
         Canvas.init(document.querySelector("canvas"));
-        Game.body = document.querySelector("body");
-        Game.body.onkeyup = Controls.on_key_up;
+        let body = document.querySelector("body");
+        body.onkeyup = Controls.on_key_up;
         Game.ready();
     }
     static ready() {
@@ -22,7 +22,9 @@ export class Game {
         GUI.draw();
         Game.player_one = new Snake({ X: 0, Y: 0 });
         Game.player_one.direction = Direction.RIGHT;
-        Game.clock = new Timer(GameDifficulty.DIFFICULT, 0, Game.onClockTick);
+        Game.player_two = new Snake({ X: 10, Y: 10 });
+        Game.player_two.direction = Direction.RIGHT;
+        Game.clock = new Timer(GameDifficulty.DIFFICULT, 0, Game.on_clock_tick);
     }
     static start() {
         if (Game.is_running) {
@@ -48,9 +50,10 @@ export class Game {
         Game.is_running = false;
         Game.ready();
     }
-    static onClockTick() {
+    static on_clock_tick() {
         Controls.process_input();
         Game.player_one.process_turn();
+        Game.player_two.process_turn();
         if (Game.clock.tick == ClockTick.EVEN) {
             // TODO: Move this to item randomizer class
             Game.coinCounter += 1;
@@ -66,14 +69,13 @@ export class Game {
                         else {
                             if (!Math.floor(Math.random() + .5)) {
                                 var slowPlayer = new SlowPlayer();
-                                Board.place_at_random(slowPlayer);
+                                // Board.place_at_random(slowPlayer)
                             }
                             else {
                                 var fastPlayer = new FastPlayer();
                                 Board.place_at_random(fastPlayer);
                             }
                         }
-                        console.log("Coins on board: " + Coin.coins_active);
                     }
                 }
             }

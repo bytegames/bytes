@@ -4,6 +4,7 @@
   "description": "Basic old-school snake game built with HTML5 Canvas and TypeScript",
   "main": "",
   "scripts": {
+    "start": "tsc && serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

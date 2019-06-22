@@ -2,6 +2,8 @@
     --fg-1: #ddddff;
     --fg-2: #4acfef;
     --fg-3: #caa2d2;
+    --coin: #CCCC00;
+    --coin-style: #FFFF00;
 }
 
 html, body { height: 100%; margin: 0; }
