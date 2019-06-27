@@ -20,7 +20,7 @@ body {
 
 header {
     width: 640px;
-    height: 100px;
+    height: 120px;
     font-size: 14px;
     border: 1px solid var(--fg-1);
     border-bottom: none;
@@ -61,7 +61,7 @@ header div {
     margin-top: 76px;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: left;
 }
 
 header > span {

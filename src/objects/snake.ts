@@ -19,7 +19,7 @@ export class Snake extends SnakeSegment implements IPlayerObject {
 
 	public hi_score: number = 0
 	public points: number = 0
-	public lives: number = 9000001
+	public lives: number = 5
 
 	public segments: SnakeSegment[] = []
 	public max_length: number = Snake.default_length
