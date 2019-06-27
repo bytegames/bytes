@@ -13,7 +13,7 @@ export class Snake extends SnakeSegment {
         this.direction = Direction.NONE;
         this.hi_score = 0;
         this.points = 0;
-        this.lives = 9000001;
+        this.lives = 5;
         this.segments = [];
         this.max_length = Snake.default_length;
         this.position = position;

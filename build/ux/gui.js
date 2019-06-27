@@ -2,16 +2,24 @@ import { Game } from '../game.js';
 export class GUI {
     static init() {
         GUI.header = document.querySelector("header");
-        GUI.score = document.querySelector("#score");
-        GUI.lives = document.querySelector("#lives");
+        GUI.playerOneScore = document.querySelector("#player-one-score");
+        GUI.playerOneLives = document.querySelector("#player-one-lives");
+        GUI.playerTwoScore = document.querySelector("#player-two-score");
+        GUI.playerTwoLives = document.querySelector("#player-two-lives");
         GUI.build = document.querySelector("#build");
     }
     static draw() {
-        GUI.lives.innerText = Game.is_running
-            ? "Lives: " + Game.player_one.lives
+        GUI.playerOneLives.innerText = Game.is_running
+            ? "Player One Lives: " + Game.player_one.lives
             : "Press Start";
-        GUI.score.innerText = Game.is_running
-            ? "Score: " + Game.player_one.points
+        GUI.playerOneScore.innerText = Game.is_running
+            ? "Player One Score: " + Game.player_one.points
             : "Hi Score: " + Game.hi_score;
+        GUI.playerTwoLives.innerText = Game.is_running
+            ? "Player Two Lives: " + Game.player_two.lives
+            : "";
+        GUI.playerTwoScore.innerText = Game.is_running
+            ? "Player Two Score: " + Game.player_two.points
+            : "";
     }
 }

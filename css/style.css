@@ -2,6 +2,8 @@
     --fg-1: #ddddff;
     --fg-2: #4acfef;
     --fg-3: #caa2d2;
+    --coin: #CCCC00;
+    --coin-style: #FFFF00;
 }
 
 html, body { height: 100%; margin: 0; }
@@ -18,7 +20,7 @@ body {
 
 header {
     width: 640px;
-    height: 100px;
+    height: 120px;
     font-size: 14px;
     border: 1px solid var(--fg-1);
     border-bottom: none;
@@ -59,7 +61,7 @@ header div {
     margin-top: 76px;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: left;
 }
 
 header > span {

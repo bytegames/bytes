@@ -1,9 +1,14 @@
 export enum GameKey {
-    UP = 38,
-    DOWN = 40,
-    LEFT = 37,
-	RIGHT = 39,
-	SPACEBAR = 32
+	PLAYER_ONE_UP = 38,
+	PLAYER_ONE_DOWN = 40,
+	PLAYER_ONE_LEFT = 37,
+	PLAYER_ONE_RIGHT = 39,
+	PLAYER_ONE_JUMP = 32,
+	PLAYER_TWO_UP = 87,
+	PLAYER_TWO_DOWN = 83,
+	PLAYER_TWO_LEFT = 65,
+	PLAYER_TWO_RIGHT = 68,
+	PLAYER_TWO_JUMP = 16
 }
 
 export enum ScreenEdge {
