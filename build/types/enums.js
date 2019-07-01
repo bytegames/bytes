@@ -1,9 +1,15 @@
 export var GameKey;
 (function (GameKey) {
-    GameKey[GameKey["UP"] = 38] = "UP";
-    GameKey[GameKey["DOWN"] = 40] = "DOWN";
-    GameKey[GameKey["LEFT"] = 37] = "LEFT";
-    GameKey[GameKey["RIGHT"] = 39] = "RIGHT";
+    GameKey[GameKey["PLAYER_ONE_UP"] = 38] = "PLAYER_ONE_UP";
+    GameKey[GameKey["PLAYER_ONE_DOWN"] = 40] = "PLAYER_ONE_DOWN";
+    GameKey[GameKey["PLAYER_ONE_LEFT"] = 37] = "PLAYER_ONE_LEFT";
+    GameKey[GameKey["PLAYER_ONE_RIGHT"] = 39] = "PLAYER_ONE_RIGHT";
+    GameKey[GameKey["PLAYER_ONE_JUMP"] = 32] = "PLAYER_ONE_JUMP";
+    GameKey[GameKey["PLAYER_TWO_UP"] = 87] = "PLAYER_TWO_UP";
+    GameKey[GameKey["PLAYER_TWO_DOWN"] = 83] = "PLAYER_TWO_DOWN";
+    GameKey[GameKey["PLAYER_TWO_LEFT"] = 65] = "PLAYER_TWO_LEFT";
+    GameKey[GameKey["PLAYER_TWO_RIGHT"] = 68] = "PLAYER_TWO_RIGHT";
+    GameKey[GameKey["PLAYER_TWO_JUMP"] = 16] = "PLAYER_TWO_JUMP";
 })(GameKey || (GameKey = {}));
 export var ScreenEdge;
 (function (ScreenEdge) {

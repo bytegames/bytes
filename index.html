@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <title>bytes</title>
     <meta charset="utf-8" />
@@ -14,21 +15,30 @@
     <meta property="og:url" content="https://bytegames.github.io/bytes/">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:image" content="https://bytegames.github.io/bytes/images/preview.png" >
+    <meta name="twitter:image" content="https://bytegames.github.io/bytes/images/preview.png">
     <meta name="twitter:title" content="bytes">
     <meta name="twitter:description" content="Retro snake game made with HTML5 and TypeScript">
     <meta name="twitter:site" content="https://bytegames.github.io/bytes/">
 
     <link rel="stylesheet" href="./css/style.css" />
 </head>
+
 <body>
 
     <header>
+        <span>Two Players?</span>
+        <label class="switch">
+            <input type="checkbox" id="toggleTwoPlayers">
+            <span class="slider"></span>
+        </label>
         <button id="reset">reset</button>
         <button id="pause">pause</button>
         <button id="start">start</button>
-        <span id="score"></span>
-        <span id="lives"></span>
+        <span id="player-one-score"></span>
+        <span id="player-one-lives"></span>
+        <span id="player-two-score"></span>
+        <span id="player-two-lives"></span>
+        <br>
         <div>
             <span>[ SPACEBAR ] - warp jump</span>
             <span id="build">&copy;2015-2019 <a href="https://twitter.com/8_bit_hacker">@8_bit_hacker</a></span>
@@ -40,4 +50,5 @@
     <script type="module" src="./build/game.js"></script>
 
 </body>
+
 </html>
